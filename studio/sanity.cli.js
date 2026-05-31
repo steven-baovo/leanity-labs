@@ -4,5 +4,6 @@ export default defineCliConfig({
   api: {
     projectId: 'iymmq5x6',
     dataset: 'production'
-  }
+  },
+  studioHost: 'leanity-labs'
 })
