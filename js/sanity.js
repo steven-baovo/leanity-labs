@@ -4,7 +4,7 @@
    ========================================================================== */
 
 const SANITY_CONFIG = {
-    projectId: "YOUR_PROJECT_ID", // Nhập Sanity Project ID thực tế của bạn tại đây để kéo dữ liệu thật
+    projectId: "iymmq5x6",        // Sanity Project ID thực tế của bạn
     dataset: "production",        // Dataset mặc định
     apiVersion: "2021-10-21",     // API version
     useCdn: true                  // Sử dụng CDN siêu tốc của Sanity
