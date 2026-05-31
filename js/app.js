@@ -109,73 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    /* ==========================================================================
-       2. Lean Systemic Efficiency Simulator (Toán học Vận hành)
-       ========================================================================== */
-    const sliderCycle = document.getElementById("param-cycle");
-    const sliderAutomation = document.getElementById("param-automation");
-    const sliderWaste = document.getElementById("param-waste");
-    
-    const valCycle = document.getElementById("val-cycle");
-    const valAutomation = document.getElementById("val-automation");
-    const valWaste = document.getElementById("val-waste");
-    
-    const metricScore = document.getElementById("metric-score");
-    const kpiOptimizedCycle = document.getElementById("kpi-optimized-cycle");
-    const kpiThroughput = document.getElementById("kpi-throughput");
-    const progressBar = document.getElementById("progress-ring-bar");
-    
-    if (sliderCycle && sliderAutomation && sliderWaste) {
-        
-        function updateSimulator() {
-            // Read inputs
-            const originalCycle = parseFloat(sliderCycle.value);
-            const automationRate = parseFloat(sliderAutomation.value);
-            const wasteRate = parseFloat(sliderWaste.value);
-            
-            // Render label values
-            valCycle.textContent = originalCycle.toFixed(1) + " giờ";
-            valAutomation.textContent = automationRate + "%";
-            valWaste.textContent = wasteRate + "%";
-            
-            // --- MATHEMATICAL FORMULAS (LÝ THUYẾT VẬN HÀNH TINH GỌN SỐ) ---
-            const automationFactor = 1 - (automationRate / 100) * 0.65;
-            const wasteFactor = 1 - ((wasteRate - 5) / 100) * 0.8;
-            
-            let optimizedCycle = originalCycle * automationFactor * wasteFactor;
-            if (optimizedCycle < 0.2) optimizedCycle = 0.2;
-            
-            const rawScore = 100 - (wasteRate * (1 - (automationRate / 100) * 0.5));
-            const leanQuotient = Math.max(20, Math.min(98, Math.round(rawScore)));
-            
-            const throughputMultiplier = originalCycle / optimizedCycle;
-            const cycleReductionPercent = ((originalCycle - optimizedCycle) / originalCycle) * 100;
-            
-            // --- RENDER SIMULATION RESULTS ---
-            metricScore.textContent = leanQuotient;
-            kpiOptimizedCycle.textContent = optimizedCycle.toFixed(1) + " giờ";
-            
-            const badgeCycle = kpiOptimizedCycle.nextElementSibling;
-            if (badgeCycle) {
-                badgeCycle.textContent = `-${cycleReductionPercent.toFixed(1)}%`;
-            }
-            
-            kpiThroughput.textContent = throughputMultiplier.toFixed(1) + "x";
-            
-            // --- PROGRESS RING ANIMATION ---
-            const circleCircumference = 314.16;
-            const strokeDashoffset = circleCircumference - (circleCircumference * (leanQuotient / 100));
-            progressBar.style.strokeDashoffset = strokeDashoffset;
-        }
-        
-        // Listeners for sliders
-        sliderCycle.addEventListener("input", updateSimulator);
-        sliderAutomation.addEventListener("input", updateSimulator);
-        sliderWaste.addEventListener("input", updateSimulator);
-        
-        // Run simulator on load
-        updateSimulator();
-    }
+
 
     /* ==========================================================================
        3. Academic Publications Filters (Bộ lọc Ấn bản)

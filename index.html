@@ -171,10 +171,7 @@
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     <span class="sidebar-text">Trang Chủ</span>
                 </a>
-                <a href="#simulator" class="sidebar-link" title="Bộ mô phỏng Lean" aria-label="Bộ mô phỏng">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                    <span class="sidebar-text">Bộ Mô Phỏng</span>
-                </a>
+
                 <a href="#about" class="sidebar-link" title="Giới thiệu & Triết lý" aria-label="Giới thiệu">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     <span class="sidebar-text">About Us</span>
@@ -208,7 +205,6 @@
             <div class="feed-tabs" role="tablist" aria-label="Feed Tabs">
                 <button class="feed-tab active" role="tab" aria-selected="true" aria-controls="tab-publications" id="btn-tab-publications" data-tab="publications">Ấn Bản Mới</button>
                 <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-philosophy" id="btn-tab-philosophy" data-tab="philosophy">Triết Lý Vận Hành</button>
-                <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-simulator" id="btn-tab-simulator" data-tab="simulator">Bộ Mô Phỏng</button>
             </div>
 
             <!-- Tab Content 1: Philosophy (Default View) -->
@@ -244,86 +240,14 @@
                     </p>
                     
                     <div style="margin-top: 32px; display: flex; gap: 12px;">
-                        <button class="btn btn-primary btn-pill btn-sm btn-switch-tab" data-target="simulator">Trải nghiệm Bộ mô phỏng</button>
-                        <button class="btn btn-outline btn-pill btn-sm btn-switch-tab" data-target="publications">Xem Ấn bản Nghiên cứu</button>
+                        <button class="btn btn-primary btn-pill btn-sm btn-switch-tab" data-target="publications">Xem Ấn bản Nghiên cứu</button>
                     </div>
                 </article>
 
 
             </div>
 
-            <!-- Tab Content 2: Simulator Widget (Bento Style Card inside Feed) -->
-            <div id="tab-simulator" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-simulator">
-                <div class="simulator-intro">
-                    <h2 class="section-title">Lean Systemic Efficiency Simulator</h2>
-                    <p class="section-subtitle">
-                        Bộ mô phỏng trực quan áp dụng **Định luật Little nâng cao** và **Lý thuyết Hàng đợi M/M/1**. Hãy thay đổi các thanh trượt tham số bên dưới để thấy sự cải tiến hiệu năng tức thì dưới mô hình toán học của chúng tôi.
-                    </p>
-                    
-                    <div class="simulator-controls" style="margin-bottom: 28px;">
-                        <div class="control-group">
-                            <label for="param-cycle" class="control-label">
-                                <span>Thời gian Chu kỳ ban đầu (Giờ/nhiệm vụ)</span>
-                                <span id="val-cycle" class="control-value">8.0</span>
-                            </label>
-                            <input type="range" id="param-cycle" min="1" max="24" step="0.5" value="8" class="slider" aria-label="Thời gian Chu kỳ ban đầu">
-                        </div>
 
-                        <div class="control-group">
-                            <label for="param-automation" class="control-label">
-                                <span>Tỷ lệ Tự động hóa quy trình (%)</span>
-                                <span id="val-automation" class="control-value">15%</span>
-                            </label>
-                            <input type="range" id="param-automation" min="0" max="95" step="5" value="15" class="slider" aria-label="Tỷ lệ Tự động hóa quy trình">
-                        </div>
-
-                        <div class="control-group">
-                            <label for="param-waste" class="control-label">
-                                <span>Chỉ số Lãng phí & Thời gian chết (%)</span>
-                                <span id="val-waste" class="control-value">45%</span>
-                            </label>
-                            <input type="range" id="param-waste" min="5" max="80" step="5" value="45" class="slider" aria-label="Chỉ số Lãng phí và Thời gian chết">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="simulator-visualizer" style="max-width: 100%;">
-                    <div class="visualizer-card shadow-subtle">
-                        <h3 class="visualizer-card-title">Kết quả Phân tích Vận hành</h3>
-                        
-                        <div class="metric-circle-wrapper">
-                            <svg class="progress-ring" viewBox="0 0 120 120" aria-label="Chỉ số Tinh gọn trực quan">
-                                <circle class="progress-ring-bg" cx="60" cy="60" r="50" fill="transparent" stroke="#f2f2f2" stroke-width="5"/>
-                                <circle id="progress-ring-bar" class="progress-ring-bar" cx="60" cy="60" r="50" fill="transparent" stroke="#5e6ad2" stroke-width="5" stroke-dasharray="314.16" stroke-dashoffset="150" stroke-linecap="round"/>
-                            </svg>
-                            <div class="metric-value-overlay">
-                                <span id="metric-score" class="metric-number">55</span>
-                                <span class="metric-label">Lean Quotient</span>
-                            </div>
-                        </div>
-
-                        <div class="kpi-grid">
-                            <div class="kpi-card shadow-subtle">
-                                <span class="kpi-title">Chu kỳ Tối ưu hóa</span>
-                                <span id="kpi-optimized-cycle" class="kpi-value">4.1 giờ</span>
-                                <span class="kpi-badge badge-green">-48.7%</span>
-                            </div>
-                            <div class="kpi-card shadow-subtle">
-                                <span class="kpi-title">Năng suất Vận hành</span>
-                                <span id="kpi-throughput" class="kpi-value">1.8x</span>
-                                <span class="kpi-badge badge-indigo">Tăng tốc</span>
-                            </div>
-                        </div>
-
-                        <div class="visualizer-footer">
-                            <p class="visualizer-note">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                                Thuật toán này chạy ngầm trong lõi công cụ đo đạc VSM của <strong>Leanity SaaS</strong> để liên tục tự động hóa doanh nghiệp bạn.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Tab Content 3: Scholarly Publications (Medium Style Stream) -->
             <div id="tab-publications" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-publications">
@@ -434,7 +358,7 @@
             <!-- Sidebar Footer -->
             <footer class="sidebar-footer">
                 <a href="#about" class="s-footer-link btn-switch-tab" data-target="philosophy">Triết lý</a>
-                <a href="#simulator" class="s-footer-link btn-switch-tab" data-target="simulator">Bộ mô phỏng</a>
+
                 <a href="#publications" class="s-footer-link btn-switch-tab" data-target="publications">Ấn bản</a>
                 <a href="#connect" class="s-footer-link btn-switch-tab" data-target="connect">Hợp tác</a>
                 <div class="s-footer-copyright">&copy; 2026 Leanity Labs.</div>
