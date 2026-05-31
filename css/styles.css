@@ -1766,4 +1766,23 @@ body {
     }
 }
 
+/* ==========================================================================
+   SUBPAGE GLOBAL LAYOUT UTILITIES (E-E-A-T Responsive Fixes)
+   ========================================================================== */
+.subpage-container {
+    flex-direction: column !important; /* Stack vertical instead of row */
+    min-height: calc(100vh - 57px - 200px); /* Account for viewport, header and footer */
+}
+
+.subpage-container .post-layout-container {
+    width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .subpage-container {
+        padding-top: 60px !important; /* Keep safe distance from fixed mobile header */
+    }
+}
+
+
 

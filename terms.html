@@ -145,7 +145,18 @@
         </div>
     </header>
 
-    <div class="app-container">
+    <!-- MOBILE STICKY HEADER (Falls back on small viewports) -->
+    <header class="mobile-header" role="banner">
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#5e6ad2" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="logo-text">Leanity <span class="logo-highlight">Labs</span></span>
+        </a>
+        <a href="index.html" class="btn btn-primary btn-pill btn-sm">Trang Chủ</a>
+    </header>
+
+    <div class="app-container subpage-container">
         <main class="post-layout-container" role="main">
             <!-- Back to Home -->
             <a href="index.html" class="btn-back-home">
