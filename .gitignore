@@ -17,3 +17,9 @@ Desktop.ini
 *.log
 tmp/
 temp/
+
+# Node.js and Sanity build files
+node_modules/
+.sanity/
+dist/
+package-lock.json
