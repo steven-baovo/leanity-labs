@@ -97,7 +97,8 @@ async function fetchSanityArticles() {
         excerpt,
         publishedAt,
         "authorName": author->name,
-        category,
+        "category": category->slug.current,
+        "categoryText": category->title,
         readTime,
         claps,
         abstract,
@@ -115,7 +116,7 @@ async function fetchSanityArticles() {
             console.log(`[Sanity.io] Đã kéo thành công ${data.result.length} ấn phẩm khoa học từ CMS.`);
             return data.result.map(art => ({
                 ...art,
-                categoryText: getCategoryText(art.category)
+                categoryText: art.categoryText || getCategoryText(art.category)
             }));
         }
         console.warn("[Sanity.io] Không tìm thấy dữ liệu bài viết trên CMS. Đang sử dụng bộ dữ liệu dự phòng.");

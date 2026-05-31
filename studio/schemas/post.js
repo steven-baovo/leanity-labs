@@ -31,14 +31,8 @@ export default {
     {
       name: 'category',
       title: 'Chuyên mục',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Khoa học Hệ thống (Systems)', value: 'systems' },
-          { title: 'Quản trị Tinh gọn (Lean)', value: 'lean' },
-          { title: 'Tối ưu hóa SaaS (Optimization)', value: 'optimization' }
-        ]
-      },
+      type: 'reference',
+      to: [{ type: 'category' }],
       validation: Rule => Rule.required()
     },
     {
