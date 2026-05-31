@@ -17,6 +17,45 @@ export default {
       description: 'Hiển thị ở trang chủ dưới tiêu đề để lôi cuốn người đọc.'
     },
     {
+      name: 'body',
+      title: 'Nội dung bài viết',
+      type: 'array',
+      description: 'Nội dung chi tiết của bài viết nghiên cứu khoa học, hỗ trợ định dạng Rich Text.',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Văn bản thường', value: 'normal' },
+            { title: 'Tiêu đề H2', value: 'h2' },
+            { title: 'Tiêu đề H3', value: 'h3' },
+            { title: 'Tiêu đề H4', value: 'h4' },
+            { title: 'Trích dẫn', value: 'blockquote' }
+          ],
+          lists: [
+            { title: 'Danh sách tròn', value: 'bullet' },
+            { title: 'Danh sách số', value: 'number' }
+          ]
+        },
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Văn bản thay thế (Alt text)',
+              validation: Rule => Rule.required()
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Chú thích hình ảnh'
+            }
+          ]
+        }
+      ]
+    },
+    {
       name: 'publishedAt',
       title: 'Ngày xuất bản',
       type: 'datetime',
