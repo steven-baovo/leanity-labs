@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài viết | Leanity Labs</title>
-    <meta name="description" content="Chi tiết bài viết nghiên cứu khoa học hệ thống và phương pháp luận tinh gọn từ Leanity Labs.">
+    <title>Liên hệ | Leanity Labs</title>
+    <meta name="description" content="Thông tin liên hệ chính thức của Ban thư ký Học thuật Leanity Labs về các vấn đề hợp tác nghiên cứu và phản biện khoa học.">
     
     <!-- Google Fonts: Merriweather for Serif reading, Plus Jakarta Sans for Sans UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        /* Tối ưu hóa trang bài viết độc lập (Academic Paper Reading Layout) */
         .post-layout-container {
             max-width: 720px;
             margin: 0 auto;
@@ -77,15 +76,6 @@
             color: var(--text-primary);
         }
 
-        .post-tag {
-            background-color: rgba(94, 106, 210, 0.08);
-            color: var(--primary);
-            padding: 2px 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 12px;
-        }
-
         .post-title {
             font-family: var(--font-serif);
             font-size: 40px;
@@ -94,31 +84,6 @@
             color: var(--text-primary);
             margin-bottom: 16px;
             letter-spacing: -0.02em;
-        }
-
-        .post-excerpt {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 32px;
-            font-weight: 300;
-        }
-
-        .post-hero-image-wrapper {
-            width: 100%;
-            margin-bottom: 40px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color-dark);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .post-hero-image {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            display: block;
         }
 
         .post-body {
@@ -131,122 +96,67 @@
 
         .post-body p {
             margin-bottom: 24px;
+            text-align: justify;
         }
 
         .post-body h2 {
             font-family: var(--font-sans);
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             line-height: 1.3;
             margin-top: 44px;
             margin-bottom: 18px;
             color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
         }
 
-        .post-body h3 {
+        .contact-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .contact-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color-dark);
+            border-radius: var(--radius-default);
+            padding: 24px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .contact-card-title {
             font-family: var(--font-sans);
-            font-size: 23px;
             font-weight: 700;
-            line-height: 1.3;
-            margin-top: 36px;
-            margin-bottom: 14px;
+            font-size: 16px;
             color: var(--text-primary);
-        }
-
-        .post-body blockquote {
-            border-left: 3px solid var(--primary);
-            padding-left: 24px;
-            margin: 36px 0;
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 20px;
-            line-height: 1.6;
-        }
-
-        .post-body-link {
-            color: var(--primary);
-            text-decoration: underline;
-            transition: var(--transition);
-        }
-
-        .post-body-link:hover {
-            opacity: 0.8;
-        }
-
-        .post-citations-section {
-            border-top: 1px solid var(--border-color-dark);
-            margin-top: 56px;
-            padding-top: 32px;
-        }
-
-        .post-citations-title {
-            font-family: var(--font-sans);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .post-citations-list {
-            padding-left: 20px;
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .post-citations-list li {
-            margin-bottom: 10px;
-        }
-
-        .post-footer {
-            border-top: 1px solid var(--border-color-dark);
-            margin-top: 48px;
-            padding-top: 24px;
+            margin-bottom: 12px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .post-clap-wrapper {
-            display: inline-flex;
             align-items: center;
             gap: 8px;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: var(--transition);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color-dark);
-            background-color: var(--bg-surface);
         }
 
-        .post-clap-wrapper:hover, .post-clap-wrapper.active {
-            background-color: var(--bg-surface-hover);
+        .contact-card-title svg {
             color: var(--primary);
-            border-color: rgba(94, 106, 210, 0.3);
+            width: 18px;
+            height: 18px;
         }
 
-        .post-clap-icon {
-            width: 20px;
-            height: 20px;
-            transition: var(--transition);
-        }
-
-        .post-clap-count {
+        .contact-card-value {
+            font-family: var(--font-sans);
             font-size: 14px;
-            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .post-layout-container {
-                padding: 32px 16px 60px 16px;
-            }
-            .post-title {
-                font-size: 32px;
-            }
-            .post-excerpt {
-                font-size: 18px;
+        .contact-card-value strong {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 576px) {
+            .contact-card-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -255,7 +165,7 @@
     <!-- Background Watermark Canvas -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- TOP SITE HEADER (Exact Same Premium Design) -->
+    <!-- TOP SITE HEADER -->
     <header class="site-header" role="banner">
         <div class="header-left">
             <a href="index.html" class="header-logo" aria-label="Leanity Labs Home">
@@ -265,7 +175,6 @@
                 <span class="header-logo-text">Leanity <span class="header-logo-highlight">Labs</span></span>
             </a>
         </div>
-        
         <div class="header-right">
             <a href="index.html" class="btn-get-app btn-pill btn-sm" title="Quay lại Trang chủ">
                 <span>Về Trang Chủ</span>
@@ -276,7 +185,6 @@
         </div>
     </header>
 
-    <!-- MAIN SINGLE COLUMN CONTENT -->
     <div class="app-container">
         <main class="post-layout-container" role="main">
             <!-- Back to Home -->
@@ -285,67 +193,91 @@
                 <span>Quay lại Trang chủ</span>
             </a>
 
-            <!-- Article Header -->
+            <!-- Header -->
             <header class="post-header">
                 <div class="post-meta">
                     <span class="post-author-avatar">LL</span>
-                    <span class="post-author-name" id="post-author">Leanity Labs Editorial Board</span>
+                    <span class="post-author-name">Leanity Labs Board</span>
                     <span class="meta-dot">·</span>
-                    <span id="post-date">May 2026</span>
-                    <span class="meta-dot">·</span>
-                    <span class="post-tag" id="post-category">Systems Science</span>
+                    <span>Hà Nội, Việt Nam</span>
                 </div>
-                
-                <div id="post-tags-container" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; margin-bottom: 20px;"></div>
-                
-                <h1 class="post-title" id="post-title">Đang tải tiêu đề bài nghiên cứu...</h1>
-                <p class="post-excerpt" id="post-excerpt"></p>
-                
-                <div class="post-hero-image-wrapper hidden" id="post-hero-wrapper">
-                    <img id="post-hero-image" src="" alt="" class="post-hero-image">
-                </div>
+                <h1 class="post-title">Liên Hệ Ban Thư Ký Học Thuật</h1>
             </header>
 
-            <!-- Article Main Body Content -->
-            <article class="post-body" id="post-body-content">
-                <p style="text-align: center; color: var(--text-secondary);">Đang truy xuất nội dung bài viết khoa học từ hệ thống...</p>
+            <!-- Main Content -->
+            <article class="post-body">
+                <p>
+                    Ban thư ký Học thuật của <strong>Leanity Labs</strong> luôn sẵn sàng lắng nghe mọi đề xuất hợp tác nghiên cứu ứng dụng, chuyển giao công nghệ, dịch thuật tài liệu khoa học, hoặc tiếp nhận các phản biện, phản hồi sửa lỗi học thuật từ bạn đọc để liên tục cải tiến chất lượng nội dung.
+                </p>
+                <p>
+                    Vui lòng liên hệ với chúng tôi thông qua các kênh chính thức dưới đây:
+                </p>
+
+                <div class="contact-card-grid">
+                    <!-- Card 1: Địa chỉ -->
+                    <div class="contact-card">
+                        <div class="contact-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span>Văn phòng Liên hệ</span>
+                        </div>
+                        <div class="contact-card-value">
+                            Tòa nhà Lotte Center Hà Nội<br>
+                            Số 54 Liễu Giai, Cống Vị, Ba Đình<br>
+                            Hà Nội, Việt Nam
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Email -->
+                    <div class="contact-card">
+                        <div class="contact-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>Email Học thuật</span>
+                        </div>
+                        <div class="contact-card-value">
+                            Ban Biên soạn: <a href="mailto:editorial@leanitylabs.com">editorial@leanitylabs.com</a><br>
+                            Hợp tác: <a href="mailto:partnership@leanitylabs.com">partnership@leanitylabs.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Điện thoại -->
+                    <div class="contact-card">
+                        <div class="contact-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>Điện thoại Cơ quan</span>
+                        </div>
+                        <div class="contact-card-value">
+                            Hotline: <strong>+84 (0) 24 7300 6886</strong><br>
+                            Thời gian làm việc: 8:30 - 17:30<br>(Thứ Hai - Thứ Sáu)
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Trực tuyến -->
+                    <div class="contact-card">
+                        <div class="contact-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span>Kết nối Trực tuyến</span>
+                        </div>
+                        <div class="contact-card-value">
+                            Biểu mẫu: <a href="index.html#connect">Gửi đề xuất trực tuyến</a><br>
+                            Mã nguồn: <a href="https://github.com/leanity-labs" target="_blank" rel="noopener noreferrer">GitHub Initiative</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Cam kết thời gian phản hồi</h2>
+                <p>
+                    Đối với các yêu cầu gửi qua Email hoặc qua biểu mẫu kết nối trực tuyến của trang web, Ban thư ký Học thuật cam kết sẽ đối chiếu dữ liệu khoa học, thảo luận nội bộ và đưa ra phản hồi chính thức qua email của bạn trong vòng <strong>24 giờ làm việc</strong>.
+                </p>
+                <p>
+                    Chúng tôi chân thành cảm ơn sự đồng hành và đóng góp học thuật của bạn dành cho sự phát triển của cộng đồng nghiên cứu tinh gọn số tại Việt Nam.
+                </p>
             </article>
-
-            <!-- Citations / Academic References -->
-            <section class="post-citations-section hidden" id="post-citations-section">
-                <h3 class="post-citations-title">Tài liệu tham khảo (Citations)</h3>
-                <ul class="post-citations-list" id="post-citations-list">
-                    <!-- Citations render dynamically here -->
-                </ul>
-            </section>
-
-            <!-- Related Posts (Bài viết liên quan cùng chuyên mục) -->
-            <section class="post-citations-section hidden" id="related-posts-section" style="border-top: 1px solid var(--border-color-dark); margin-top: 56px; padding-top: 32px;">
-                <h3 class="post-citations-title" style="margin-bottom: 24px;">Bài viết liên quan</h3>
-                <div id="related-posts-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px;">
-                    <!-- Related posts render dynamically here -->
-                </div>
-            </section>
-
-            <!-- Article Feedback / Action (Clap) -->
-            <footer class="post-footer">
-                <div class="post-clap-wrapper" id="post-clap-btn" title="Vỗ tay cổ vũ">
-                    <svg class="post-clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                    <span class="post-clap-count" id="post-clap-count">0</span>
-                </div>
-                
-                <div style="font-size: 13px; color: var(--text-muted);">
-                    Ban biên tập Học thuật &bull; Leanity Labs 2026
-                </div>
-            </footer>
         </main>
+    </div>
 
-    <!-- ==========================================================================
-         MAIN WEBSITE FOOTER (Mindlabs E-E-A-T Compliant)
-         ========================================================================== -->
+    <!-- MAIN WEBSITE FOOTER -->
     <footer class="main-site-footer" role="contentinfo">
         <div class="footer-container">
-            <!-- Col 1: Brand Info -->
             <div class="footer-column">
                 <a href="index.html" class="footer-brand" aria-label="Leanity Labs Home">
                     <svg class="footer-brand-logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -357,8 +289,6 @@
                     Sáng kiến độc lập về nghiên cứu khoa học hệ thống, toán học vận hành và chuyển đổi tinh gọn số. Chúng tôi hệ thống hóa tri thức học thuật giúp kiến tạo hiệu năng tối thượng cho doanh nghiệp.
                 </p>
             </div>
-
-            <!-- Col 2: Academic & Philosophy -->
             <div class="footer-column">
                 <h4 class="footer-heading">Học Thuật & Dự Án</h4>
                 <ul class="footer-links">
@@ -368,8 +298,6 @@
                     <li><a href="https://leanity.com" target="_blank" rel="noopener noreferrer">Leanity SaaS</a></li>
                 </ul>
             </div>
-
-            <!-- Col 3: Compliance & Legal -->
             <div class="footer-column">
                 <h4 class="footer-heading">Chính Sách & Pháp Lý</h4>
                 <ul class="footer-links">
@@ -379,8 +307,6 @@
                     <li><a href="about.html#contributors">Ban Biên soạn</a></li>
                 </ul>
             </div>
-
-            <!-- Col 4: Contact & Connection -->
             <div class="footer-column">
                 <h4 class="footer-heading">Kết Nối</h4>
                 <ul class="footer-links">
@@ -391,7 +317,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="footer-copyright">
                 &copy; 2026 Leanity Labs. Đăng ký hoạt động nghiên cứu khoa học và phát triển công nghệ độc lập.
@@ -410,10 +335,14 @@
         </div>
     </footer>
 
-    </div>
-
     <!-- Custom JS -->
     <script src="js/particles.js"></script>
-    <script src="js/post-detail.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof initParticles === "function") {
+                initParticles();
+            }
+        });
+    </script>
 </body>
 </html>
