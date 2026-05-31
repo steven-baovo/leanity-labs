@@ -280,6 +280,9 @@ async function loadArticleDetail() {
             });
         }
 
+        // Tải danh sách bài viết liên quan (Related Articles) cùng category
+        loadRelatedArticles(article._id, article.category, article.categoryText);
+
     } else {
         // Không tìm thấy bài viết nào
         document.getElementById("post-title").textContent = "Không tìm thấy bài nghiên cứu";
@@ -295,3 +298,98 @@ async function loadArticleDetail() {
 document.addEventListener("DOMContentLoaded", () => {
     loadArticleDetail();
 });
+
+// 4. TẢI DỰ LIỆU BÀI VIẾT LIÊN QUAN CÙNG CHUYÊN MỤC (CATEGORY)
+async function loadRelatedArticles(currentId, categorySlug, categoryText) {
+    const relatedSection = document.getElementById("related-posts-section");
+    const relatedList = document.getElementById("related-posts-list");
+    if (!relatedSection || !relatedList) return;
+    
+    let relatedArticles = [];
+    
+    // Lọc từ bộ dữ liệu tĩnh dự phòng trước
+    relatedArticles = STATIC_FALLBACK_ARTICLES.filter(art => 
+        art.category === categorySlug && art._id !== currentId
+    );
+    
+    // Nếu đã cấu hình Sanity, gọi API lấy dữ liệu thực tế cùng category
+    if (SANITY_CONFIG.projectId && SANITY_CONFIG.projectId !== "YOUR_PROJECT_ID") {
+        const query = encodeURIComponent(`*[_type == "post" && category->slug.current == "${categorySlug}" && _id != "${currentId}"] | order(publishedAt desc)[0...3] {
+            _id,
+            title,
+            slug,
+            excerpt,
+            publishedAt,
+            "authorName": author->name,
+            "category": category->slug.current,
+            "categoryText": category->title,
+            readTime,
+            "imageUrl": mainImage.asset->url
+        }`);
+        
+        const url = `https://${SANITY_CONFIG.projectId}.api.sanity.io/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${query}`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data && data.result && data.result.length > 0) {
+                relatedArticles = data.result;
+            }
+        } catch (error) {
+            console.error("[Sanity.io] Lỗi kết nối lấy bài liên quan:", error);
+        }
+    }
+    
+    // Kết xuất HTML các thẻ bài viết liên quan
+    if (relatedArticles && relatedArticles.length > 0) {
+        relatedList.innerHTML = relatedArticles.map(art => {
+            const isStaticThumb = art.imageUrl === "static" || !art.imageUrl;
+            let thumbnailHTML = "";
+            if (isStaticThumb) {
+                let pathD = "M30 65 L45 40 L60 55 L80 30";
+                if (art.category === "lean") {
+                    pathD = "M25 25 H 75 V 75 H 25 Z";
+                } else if (art.category === "optimization") {
+                    pathD = "M20 50 Q 35 20, 50 50 T 80 50";
+                }
+                thumbnailHTML = `
+                    <svg style="width:100%; height:110px; background-color:#fafafa; border-radius:4px; border:1px solid var(--border-color-dark);" viewBox="0 0 100 100">
+                        <path d="${pathD}" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                `;
+            } else {
+                thumbnailHTML = `<img src="${art.imageUrl}" alt="${art.title}" style="width:100%; height:110px; object-fit:cover; border-radius:4px; border:1px solid var(--border-color-dark);">`;
+            }
+            
+            const linkHref = art.slug?.current ? `post.html?slug=${art.slug.current}` : `post.html?id=${art._id}`;
+            
+            return `
+                <a href="${linkHref}" style="text-decoration:none; display:flex; flex-direction:column; gap:10px; color:inherit; transition:var(--transition); padding:12px; border-radius:8px; border:1px solid var(--border-color); background-color:var(--bg-surface);" class="related-card">
+                    ${thumbnailHTML}
+                    <span style="font-size:11px; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.05em;">${art.categoryText || categoryText}</span>
+                    <h4 style="font-family:var(--font-serif); font-size:14px; font-weight:700; line-height:1.4; color:var(--text-primary); margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">${art.title}</h4>
+                    <span style="font-size:11px; color:var(--text-muted);">${formatPublishedDate(art.publishedAt)} &bull; ${art.readTime || 5} phút đọc</span>
+                </a>
+            `;
+        }).join("");
+        
+        // Thêm CSS hover inline
+        const styleNode = document.createElement("style");
+        styleNode.innerHTML = `
+            .related-card {
+                box-shadow: var(--shadow-subtle);
+            }
+            .related-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(94, 106, 210, 0.25) !important;
+                background-color: var(--bg-surface-hover) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            }
+        `;
+        document.head.appendChild(styleNode);
+        
+        relatedSection.classList.remove("hidden");
+    } else {
+        relatedSection.classList.add("hidden");
+    }
+}
