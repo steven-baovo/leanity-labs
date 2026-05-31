@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert(`[Leanity Labs] Báo cáo nghiên cứu PDF:\n"${paperTitle}"\nđang được chuẩn bị phát hành chính thức trên thư viện mở SSRN và ResearchGate. Vui lòng quay lại tải bản in đầy đủ trong ít ngày tới!`);
         }
     });
-    // Chuyển hướng sang trang chi tiết bài viết (post.html) khi click vào paper-card
+    // Chuyển hướng sang trang chi tiết bài viết (article.html) khi click vào paper-card
     document.addEventListener("click", function (e) {
         const paperCard = e.target.closest(".paper-card");
         if (paperCard) {
@@ -318,9 +318,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (slug) {
                 // Kiểm tra xem có đang chạy localhost không
                 const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-                window.location.href = isLocal ? `post.html?slug=${slug}` : `post/${slug}`;
+                window.location.href = isLocal ? `article.html?slug=${slug}` : `post/${slug}`;
             } else if (articleId) {
-                window.location.href = `post.html?id=${articleId}`;
+                window.location.href = `article.html?id=${articleId}`;
             }
         }
     });

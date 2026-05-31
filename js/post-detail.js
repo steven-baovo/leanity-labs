@@ -373,8 +373,8 @@ async function loadRelatedArticles(currentId, categorySlug, categoryText) {
             
             const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
             const linkHref = art.slug?.current 
-                ? (isLocal ? `post.html?slug=${art.slug.current}` : `post/${art.slug.current}`)
-                : `post.html?id=${art._id}`;
+                ? (isLocal ? `article.html?slug=${art.slug.current}` : `post/${art.slug.current}`)
+                : `article.html?id=${art._id}`;
             
             return `
                 <a href="${linkHref}" style="text-decoration:none; display:flex; flex-direction:column; gap:10px; color:inherit; transition:var(--transition); padding:12px; border-radius:8px; border:1px solid var(--border-color); background-color:var(--bg-surface);" class="related-card">
