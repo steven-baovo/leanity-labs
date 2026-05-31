@@ -7,6 +7,12 @@ Tài liệu này quy định hệ thống quy chuẩn thiết kế giao diện *
 
 ---
 
+## 🔴 Nguyên Tắc Vận Hành & Phát Triển Tối Cao (Supreme Operating & Development Principles)
+
+*   **Tuyệt đối không tự ý đẩy mã nguồn lên GitHub (`git push`)**: Trợ lý AI phát triển tuyệt đối **không được tự ý thực hiện lệnh đẩy mã nguồn lên GitHub** trừ khi có sự cho phép hoặc lệnh yêu cầu trực tiếp, rõ ràng từ người dùng (USER). Mọi thay đổi mã nguồn chỉ được lưu trữ cục bộ hoặc commit tại local cho đến khi được chỉ thị cụ thể.
+
+---
+
 ## 📐 1. Quy Chuẩn Góc Bo & Khoảng Trắng (Radii & Grid System)
 
 *   **Bo góc tối giản**:
