@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leanity Labs | Viện Nghiên cứu Hệ thống & Phương pháp luận Tinh gọn số</title>
+    <meta name="description" content="Leanity Labs là tổ chức nghiên cứu khoa học hệ thống, toán học vận hành và kiến trúc tinh gọn số đứng sau nền tảng tối ưu hóa doanh nghiệp Leanity SaaS.">
+    <meta name="keywords" content="Leanity Labs, Nghiên cứu tinh gọn, Tinh gọn số, Vận hành hệ thống, Định luật Little, Lý thuyết xếp hàng, SaaS Optimization">
+    
+    <!-- Google Fonts: Merriweather for Serif reading, Plus Jakarta Sans for Sans UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,450&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org Entity JSON-LD (Academic & Organization Structured Data) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ResearchOrganization",
+          "@id": "https://leanitylab.com/#organization",
+          "name": "Leanity Labs",
+          "alternateName": "Viện Nghiên cứu Hệ thống & Phương pháp luận Tinh gọn số",
+          "url": "https://leanitylab.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://leanitylab.com/assets/logo.png"
+          },
+          "description": "Tổ chức nghiên cứu khoa học hệ thống, toán học vận hành, tối ưu hóa quy trình doanh nghiệp và là thực thể khoa học đứng sau nền tảng SaaS Leanity.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hà Nội",
+            "addressCountry": "VN"
+          },
+          "knowsAbout": [
+            "Systems Engineering",
+            "Lean Management",
+            "Operations Research",
+            "Queueing Theory",
+            "SaaS Architecture Optimization",
+            "Digital Value Stream Mapping"
+          ],
+          "publishingPrinciples": "https://leanitylab.com/methodology",
+          "sameAs": [
+            "https://www.linkedin.com/company/leanity-labs",
+            "https://github.com/leanity-labs"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://leanity.com/#software",
+          "name": "Leanity SaaS",
+          "url": "https://leanity.com",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "description": "Nền tảng tự động hóa và tối ưu hóa quy trình doanh nghiệp dựa trên mô hình toán học vận hành của Leanity Labs.",
+          "author": {
+            "@id": "https://leanitylab.com/#organization"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Ứng dụng Định luật Little và Lý thuyết Hàng đợi M/M/1 trong Tối ưu hóa Chu kỳ Vận hành SaaS",
+          "headline": "Ứng dụng Định luật Little và Lý thuyết Hàng đợi M/M/1 trong Tối ưu hóa Chu kỳ Vận hành SaaS",
+          "author": {
+            "@type": "Organization",
+            "name": "Leanity Labs Editorial Board"
+          },
+          "publisher": {
+            "@id": "https://leanitylab.com/#organization"
+          },
+          "datePublished": "2026-03-15",
+          "description": "Nghiên cứu toán học ứng dụng chỉ ra phương pháp giảm thiểu tắc nghẽn thông tin và rút ngắn thời gian chu kỳ trong quy trình vận hành của các công ty công nghệ số.",
+          "about": [
+            {
+              "@type": "Thing",
+              "name": "Queueing Theory"
+            },
+            {
+              "@type": "Thing",
+              "name": "Little's Law"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="medium-grid-layout">
+    <!-- Background Watermark Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- App Container for centering and responsiveness -->
+    <div class="app-container">
+
+        <!-- COLUMN 1: LEFT SIDEBAR NAVIGATION (Exact Medium Layout) -->
+        <aside class="left-sidebar" role="complementary" aria-label="Left Sidebar Navigation">
+        <div class="sidebar-top">
+            <a href="#" class="logo" aria-label="Leanity Labs Home">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#5e6ad2" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            
+            <nav class="sidebar-nav" aria-label="Primary Navigation">
+                <a href="#about" class="sidebar-link active" title="Trang chủ & Triết lý" aria-label="Triết lý vận hành">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span class="sidebar-text">Triết lý</span>
+                </a>
+                <a href="#simulator" class="sidebar-link" title="Bộ mô phỏng Lean" aria-label="Bộ mô phỏng năng suất">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span class="sidebar-text">Mô Phỏng</span>
+                </a>
+                <a href="#publications" class="sidebar-link" title="Ấn bản nghiên cứu khoa học" aria-label="Ấn bản nghiên cứu">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    <span class="sidebar-text">Nghiên Cứu</span>
+                </a>
+                <a href="#connect" class="sidebar-link" title="Hợp tác với chúng tôi" aria-label="Liên hệ hợp tác">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span class="sidebar-text">Hợp Tác</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <span class="badge-dot-active" title="Môi trường kết nối: An toàn"></span>
+        </div>
+    </aside>
+
+    <!-- MOBILE STICKY HEADER (Falls back on small viewports) -->
+    <header class="mobile-header" role="banner">
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#5e6ad2" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="logo-text">Leanity <span class="logo-highlight">Labs</span></span>
+        </a>
+        <a href="https://leanity.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-pill btn-sm">SaaS</a>
+    </header>
+
+    <!-- MAIN TWO-COLUMN CONTAINER -->
+    <main class="main-content-wrapper" role="main">
+        
+        <!-- COLUMN 2: CENTER MAIN FEED (Medium Articles & Widget Feed) -->
+        <section class="main-feed-column">
+            
+            <!-- Feed Top Navigation Tabs -->
+            <div class="feed-tabs" role="tablist" aria-label="Feed Tabs">
+                <button class="feed-tab active" role="tab" aria-selected="true" aria-controls="tab-philosophy" id="btn-tab-philosophy" data-tab="philosophy">Cho bạn (Triết lý)</button>
+                <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-simulator" id="btn-tab-simulator" data-tab="simulator">Bộ Mô Phỏng</button>
+                <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-publications" id="btn-tab-publications" data-tab="publications">Ấn Bản Mới</button>
+            </div>
+
+            <!-- Tab Content 1: Philosophy (Default View) -->
+            <div id="tab-philosophy" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-philosophy">
+                
+                <!-- Pinned Story (Hero) -->
+                <header class="pinned-story-header">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        Thực thể Nghiên cứu Khoa học của Leanity SaaS
+                    </div>
+                    <h1 class="story-title">Học Thuật Kiến Tạo Hiệu Năng Tối Thượng.</h1>
+                    <p class="story-subtitle">Chúng tôi tổng hợp, nghiên cứu và hệ thống hóa các định luật vận hành kinh điển thành các mô hình toán học số hóa – bộ não khoa học đứng sau công nghệ tối ưu hóa của <strong>Leanity SaaS</strong>.</p>
+                </header>
+
+                <article class="academic-editorial-flow">
+                    <p class="editorial-p">
+                        Trong kỷ nguyên chuyển đổi số B2B, phần lớn các doanh nghiệp thường đối mặt với một vấn đề cốt lõi: <strong>lãng phí thời gian chết vô hình</strong>. Những lãng phí này không nằm ở máy móc vật lý, mà nằm ở luồng xử lý thông tin phi cấu trúc giữa con người và phần mềm.
+                    </p>
+                    
+                    <p class="editorial-p">
+                        Đó là lý do Leanity Labs được thành lập. Chúng tôi tiếp cận tối ưu quy trình dưới góc nhìn **khoa học hệ thống thực chứng** (Applied Systems Science). Thay vì suy đoán cảm tính, chúng tôi mô hình hóa các quy trình số thông qua hai trục lý thuyết chính:
+                    </p>
+
+                    <!-- Academic Blockquote (Medium Standard) -->
+                    <blockquote class="academic-quote shadow-subtle">
+                        "Hiệu năng tối thượng của một doanh nghiệp không nằm ở việc nhân sự làm việc chăm chỉ bao nhiêu tiếng, mà nằm ở việc cấu trúc hệ thống của bạn loại bỏ được bao nhiêu phần trăm lãng phí thời gian chết và tắc nghẽn thông tin."
+                        <span class="quote-author">— Ban Nghiên cứu Hệ thống, Leanity Labs</span>
+                    </blockquote>
+
+                    <p class="editorial-p">
+                        Toàn bộ các nghiên cứu về **Định luật Little**, **Lý thuyết Hàng đợi** và **Takt Time** của chúng tôi được chuyển giao công nghệ trực tiếp để làm động cơ thuật toán cốt lõi chạy ngầm trong **Leanity SaaS**, giúp doanh nghiệp tự động phân tích sơ đồ dòng giá trị số (Digital VSM) và cải tiến hiệu năng tự động thời gian thực.
+                    </p>
+                    
+                    <div style="margin-top: 32px; display: flex; gap: 12px;">
+                        <button class="btn btn-primary btn-pill btn-sm btn-switch-tab" data-target="simulator">Trải nghiệm Bộ mô phỏng</button>
+                        <button class="btn btn-outline btn-pill btn-sm btn-switch-tab" data-target="publications">Xem Ấn bản Nghiên cứu</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Tab Content 2: Simulator Widget (Bento Style Card inside Feed) -->
+            <div id="tab-simulator" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-simulator">
+                <div class="simulator-intro">
+                    <h2 class="section-title">Lean Systemic Efficiency Simulator</h2>
+                    <p class="section-subtitle">
+                        Bộ mô phỏng trực quan áp dụng **Định luật Little nâng cao** và **Lý thuyết Hàng đợi M/M/1**. Hãy thay đổi các thanh trượt tham số bên dưới để thấy sự cải tiến hiệu năng tức thì dưới mô hình toán học của chúng tôi.
+                    </p>
+                    
+                    <div class="simulator-controls" style="margin-bottom: 28px;">
+                        <div class="control-group">
+                            <label for="param-cycle" class="control-label">
+                                <span>Thời gian Chu kỳ ban đầu (Giờ/nhiệm vụ)</span>
+                                <span id="val-cycle" class="control-value">8.0</span>
+                            </label>
+                            <input type="range" id="param-cycle" min="1" max="24" step="0.5" value="8" class="slider" aria-label="Thời gian Chu kỳ ban đầu">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="param-automation" class="control-label">
+                                <span>Tỷ lệ Tự động hóa quy trình (%)</span>
+                                <span id="val-automation" class="control-value">15%</span>
+                            </label>
+                            <input type="range" id="param-automation" min="0" max="95" step="5" value="15" class="slider" aria-label="Tỷ lệ Tự động hóa quy trình">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="param-waste" class="control-label">
+                                <span>Chỉ số Lãng phí & Thời gian chết (%)</span>
+                                <span id="val-waste" class="control-value">45%</span>
+                            </label>
+                            <input type="range" id="param-waste" min="5" max="80" step="5" value="45" class="slider" aria-label="Chỉ số Lãng phí và Thời gian chết">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="simulator-visualizer" style="max-width: 100%;">
+                    <div class="visualizer-card shadow-subtle">
+                        <h3 class="visualizer-card-title">Kết quả Phân tích Vận hành</h3>
+                        
+                        <div class="metric-circle-wrapper">
+                            <svg class="progress-ring" viewBox="0 0 120 120" aria-label="Chỉ số Tinh gọn trực quan">
+                                <circle class="progress-ring-bg" cx="60" cy="60" r="50" fill="transparent" stroke="#f2f2f2" stroke-width="5"/>
+                                <circle id="progress-ring-bar" class="progress-ring-bar" cx="60" cy="60" r="50" fill="transparent" stroke="#5e6ad2" stroke-width="5" stroke-dasharray="314.16" stroke-dashoffset="150" stroke-linecap="round"/>
+                            </svg>
+                            <div class="metric-value-overlay">
+                                <span id="metric-score" class="metric-number">55</span>
+                                <span class="metric-label">Lean Quotient</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-grid">
+                            <div class="kpi-card shadow-subtle">
+                                <span class="kpi-title">Chu kỳ Tối ưu hóa</span>
+                                <span id="kpi-optimized-cycle" class="kpi-value">4.1 giờ</span>
+                                <span class="kpi-badge badge-green">-48.7%</span>
+                            </div>
+                            <div class="kpi-card shadow-subtle">
+                                <span class="kpi-title">Năng suất Vận hành</span>
+                                <span id="kpi-throughput" class="kpi-value">1.8x</span>
+                                <span class="kpi-badge badge-indigo">Tăng tốc</span>
+                            </div>
+                        </div>
+
+                        <div class="visualizer-footer">
+                            <p class="visualizer-note">
+                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                Thuật toán này chạy ngầm trong lõi công cụ đo đạc VSM của <strong>Leanity SaaS</strong> để liên tục tự động hóa doanh nghiệp bạn.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Scholarly Publications (Medium Style Stream) -->
+            <div id="tab-publications" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-publications">
+                <div class="section-header">
+                    <h2 class="section-title">Ấn Bản Khoa Học & Nghiên Cứu</h2>
+                    <p class="section-subtitle">Danh mục tài liệu tổng hợp và các công trình ứng dụng lý thuyết tinh gọn số của Ban biên soạn.</p>
+                    
+                    <div class="publications-filter" role="group" aria-label="Bộ lọc chuyên mục nghiên cứu">
+                        <button class="filter-btn active" data-category="all" aria-label="Hiển thị tất cả bài nghiên cứu" title="Xem tất cả">Tất cả</button>
+                        <button class="filter-btn" data-category="systems" aria-label="Lọc chuyên mục khoa học hệ thống" title="Khoa học Hệ thống">Hệ thống</button>
+                        <button class="filter-btn" data-category="lean" aria-label="Lọc chuyên mục quản trị tinh gọn" title="Quản trị Tinh gọn">Tinh gọn</button>
+                        <button class="filter-btn" data-category="optimization" aria-label="Lọc chuyên mục tối ưu hóa SaaS" title="Tối ưu hóa SaaS">SaaS</button>
+                    </div>
+                </div>
+
+                <!-- Stream List (Exactly as screenshotted) -->
+                <div class="publications-list">
+                    <!-- Paper 1 -->
+                    <article class="paper-card" data-category="systems">
+                        <div class="paper-meta">
+                            <span class="author-avatar-stub">LL</span>
+                            <span class="author-name">Leanity Labs Editorial Board</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-date">March 2026</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-tag-text">Khoa học Hệ thống</span>
+                        </div>
+                        
+                        <div class="paper-body-wrapper">
+                            <div class="paper-main-content">
+                                <h3 class="paper-title">Ứng dụng Định luật Little và Lý thuyết Hàng đợi M/M/1 trong Tối ưu hóa Chu kỳ Vận hành SaaS</h3>
+                                <p class="paper-excerpt">Nghiên cứu ứng dụng toán học chỉ ra phương pháp giảm thiểu thắt nút cổ chai dữ liệu và rút ngắn thời gian chu kỳ trong quy trình vận hành của các công ty công nghệ số...</p>
+                            </div>
+                            
+                            <div class="paper-thumbnail">
+                                <svg class="thumb-svg" viewBox="0 0 100 100">
+                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
+                                    <circle cx="50" cy="50" r="30" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
+                                    <path d="M30 65 L45 40 L60 55 L80 30" fill="none" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="80" cy="30" r="3" fill="#5e6ad2"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="paper-details" id="details-paper-1">
+                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
+                            <p class="details-text">
+                                Nghiên cứu này giải quyết bài toán tối ưu hóa thời gian xử lý và giảm thiểu tồn đọng (work-in-progress) trong các hệ thống quy trình dịch vụ số. Bằng cách áp dụng mô hình hàng đợi M/M/1 truyền thống kết hợp với Định luật Little (L = λW), chúng tôi xây dựng một công thức tính toán năng suất biên cho phép các kiến trúc sư quy trình tự động xác định chính xác điểm tắc nghẽn thông tin. Kết quả thực nghiệm cho thấy việc ứng dụng công thức này vào bộ máy phân tích của Leanity SaaS giúp giảm trung bình 42% thời gian chu kỳ tổng thể của doanh nghiệp thử nghiệm.
+                            </p>
+                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
+                            <ul class="citation-list">
+                                <li>Little, J. D. (2011). "A Proof for the Queueing Formula: L = λW". <i>Operations Research</i>.</li>
+                                <li>Hopp, W. J., & Spearman, M. L. (2011). <i>Factory Physics</i> (3rd ed.). Waveland Press.</li>
+                            </ul>
+                        </div>
+
+                        <div class="paper-actions">
+                            <div class="actions-left">
+                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-1" aria-label="Xem tóm tắt bài viết số 1" title="Hiển thị Abstract" data-action="toggle-abstract-1">Xem Abstract</button>
+                                <span class="read-time">5 phút đọc</span>
+                            </div>
+                            
+                            <!-- Clapping and Bookmarks (Exact Medium detail) -->
+                            <div class="actions-right">
+                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
+                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                                    <span class="clap-count">482</span>
+                                </div>
+                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-1">
+                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Paper 2 -->
+                    <article class="paper-card" data-category="lean">
+                        <div class="paper-meta">
+                            <span class="author-avatar-stub">LL</span>
+                            <span class="author-name">Leanity Labs Editorial Board</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-date">January 2026</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-tag-text">Quản trị Tinh gọn</span>
+                        </div>
+                        
+                        <div class="paper-body-wrapper">
+                            <div class="paper-main-content">
+                                <h3 class="paper-title">Mô hình hóa Sơ đồ Dòng Giá trị Số (Digital Value Stream Mapping) trong Kỷ nguyên Chuyển đổi Số B2B</h3>
+                                <p class="paper-excerpt">Hệ thống hóa phương pháp vẽ sơ đồ dòng giá trị (VSM) truyền thống của Toyota thành công cụ đo đạc tự động thời gian thực bằng thuật toán thu thập dữ liệu...</p>
+                            </div>
+                            
+                            <div class="paper-thumbnail">
+                                <svg class="thumb-svg" viewBox="0 0 100 100">
+                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
+                                    <path d="M25 25 H 75 V 75 H 25 Z" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
+                                    <circle cx="40" cy="50" r="10" fill="#5e6ad2" opacity="0.1"/>
+                                    <circle cx="40" cy="50" r="3" fill="#5e6ad2"/>
+                                    <circle cx="65" cy="50" r="3" fill="#5e6ad2"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="paper-details" id="details-paper-2">
+                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
+                            <p class="details-text">
+                                Sơ đồ dòng giá trị (Value Stream Mapping - VSM) là công cụ tinh gọn kinh điển để xác định các lãng phí (Muda) trong sản xuất vật lý. Tuy nhiên, trong môi trường văn phòng số và dịch vụ phần mềm, các lãng phí này vô hình và cực kỳ khó đo đạc bằng phương pháp bấm giờ thủ công. Bài viết này giới thiệu mô hình "Digital VSM" - một hệ thống thuật toán tự động phân tích dấu vết luồng dữ liệu (activity logs) của nhân sự và hệ thống để tự động dựng lại bản đồ dòng giá trị thời gian thực. Mô hình này đã được cấu trúc hóa hoàn chỉnh để chạy ngầm trong phân hệ đo lường của Leanity SaaS.
+                            </p>
+                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
+                            <ul class="citation-list">
+                                <li>Rother, M., & Shook, J. (2003). <i>Learning to See: Value Stream Mapping to Add Value and Eliminate Muda</i>. Lean Enterprise Institute.</li>
+                                <li>Womack, J. P., & Jones, D. T. (2003). <i>Lean Thinking: Banish Waste and Create Wealth in Your Corporation</i>. Free Press.</li>
+                            </ul>
+                        </div>
+
+                        <div class="paper-actions">
+                            <div class="actions-left">
+                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-2" aria-label="Xem tóm tắt bài viết số 2" title="Hiển thị Abstract" data-action="toggle-abstract-2">Xem Abstract</button>
+                                <span class="read-time">7 phút đọc</span>
+                            </div>
+                            
+                            <div class="actions-right">
+                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
+                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                                    <span class="clap-count">319</span>
+                                </div>
+                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-2">
+                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Paper 3 -->
+                    <article class="paper-card" data-category="optimization">
+                        <div class="paper-meta">
+                            <span class="author-avatar-stub">LL</span>
+                            <span class="author-name">Leanity Labs Editorial Board</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-date">November 2025</span>
+                            <span class="meta-dot">·</span>
+                            <span class="paper-tag-text">Tối ưu hóa SaaS</span>
+                        </div>
+                        
+                        <div class="paper-body-wrapper">
+                            <div class="paper-main-content">
+                                <h3 class="paper-title">Cân bằng Takt Time Số: Triết lý TPS ứng dụng vào Thiết kế Luồng Tự động hóa Doanh nghiệp</h3>
+                                <p class="paper-excerpt">Phân tích chuyên sâu cách thức cân bằng nhịp độ sản sinh giá trị (Takt Time) trong các mô hình làm việc tự động giữa người và phần mềm hỗ trợ doanh nghiệp vừa và nhỏ...</p>
+                            </div>
+                            
+                            <div class="paper-thumbnail">
+                                <svg class="thumb-svg" viewBox="0 0 100 100">
+                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
+                                    <path d="M20 50 Q 35 20, 50 50 T 80 50" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
+                                    <circle cx="50" cy="50" r="4" fill="#5e6ad2"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="paper-details" id="details-paper-3">
+                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
+                            <p class="details-text">
+                                Một trong những nguyên nhân lớn nhất khiến các dự án tự động hóa quy trình thất bại là sự mất cân bằng về năng lực xử lý giữa nhân sự và các bot/phần mềm tự động, tạo ra các hàng đợi công việc khổng lồ hoặc gây lãng phí tài nguyên máy tính. Nghiên cứu này ứng dụng triết lý Takt Time của Hệ thống sản xuất Toyota (TPS) để xây dựng thuật toán cân bằng tải luồng công việc số tự động (Digital Workload Balancing). Phương pháp này đã được ứng dụng trực tiếp trong lõi phân phối nhiệm vụ thông minh của Leanity SaaS.
+                            </p>
+                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
+                            <ul class="citation-list">
+                                <li>Ohno, T. (1988). <i>Toyota Production System: Beyond Large-Scale Production</i>. Productivity Press.</li>
+                                <li>Liker, J. K. (2004). <i>The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer</i>. McGraw-Hill.</li>
+                            </ul>
+                        </div>
+
+                        <div class="paper-actions">
+                            <div class="actions-left">
+                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-3" aria-label="Xem tóm tắt bài viết số 3" title="Hiển thị Abstract" data-action="toggle-abstract-3">Xem Abstract</button>
+                                <span class="read-time">6 phút đọc</span>
+                            </div>
+                            
+                            <div class="actions-right">
+                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
+                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                                    <span class="clap-count">294</span>
+                                </div>
+                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-3">
+                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Tab Content 4: Collaboration Form -->
+            <div id="tab-connect" class="tab-pane" role="tabpanel" aria-labelledby="connect-heading">
+                <div class="connect-info">
+                    <h2 class="section-title">Hợp tác Nghiên cứu & Chuyển giao Công nghệ</h2>
+                    <p class="section-subtitle" style="margin-bottom: 24px;">
+                        Leanity Labs luôn chào đón các cơ hội hợp tác nghiên cứu ứng dụng cùng các trường đại học khối kinh tế/công nghệ, các nhà nghiên cứu độc lập và các doanh nghiệp mong muốn chuyển giao mô hình tối ưu hóa vận hành.
+                    </p>
+                </div>
+
+                <div class="connect-form-wrapper" style="max-width: 100%;">
+                    <div class="glass-card form-card shadow-subtle">
+                        <h3 class="form-title">Gửi Yêu cầu Hợp tác</h3>
+                        <form id="collaboration-form" class="form" aria-label="Biểu mẫu gửi đề xuất hợp tác">
+                            <div class="form-group">
+                                <label for="form-name" class="form-label">Họ và Tên</label>
+                                <input type="text" id="form-name" placeholder="Nguyễn Văn A" class="form-input shadow-subtle" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">Email Liên hệ</label>
+                                <input type="email" id="form-email" placeholder="example@domain.com" class="form-input shadow-subtle" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-type" class="form-label">Vai trò của bạn</label>
+                                <select id="form-type" class="form-input form-select shadow-subtle" aria-label="Chọn vai trò đối tác">
+                                    <option value="enterprise">Doanh nghiệp cần Tư vấn</option>
+                                    <option value="researcher">Nhà Nghiên cứu / Giáo sư</option>
+                                    <option value="student">Nghiên cứu sinh / Sinh viên</option>
+                                    <option value="other">Hợp tác khác</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-message" class="form-label">Đề xuất hợp tác sơ bộ</label>
+                                <textarea id="form-message" rows="4" placeholder="Mô tả mong muốn hợp tác hoặc nhu cầu tối ưu hóa quy trình của bạn..." class="form-input form-textarea shadow-subtle" required aria-required="true"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block btn-pill" aria-label="Bấm để gửi yêu cầu kết nối học thuật" title="Gửi kết nối" data-action="submit-collaboration">Gửi Yêu cầu Kết nối</button>
+                        </form>
+                        
+                        <div id="form-toast" class="form-toast hidden" role="alert" aria-live="assertive"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLUMN 3: RIGHT SIDEBAR (Exact Medium Picks & recommended topics) -->
+        <aside class="right-sidebar" role="complementary" aria-label="Right Sidebar Widgets">
+            
+            <!-- Staff Picks (Restyled for Leanity Labs: "Bản tin chọn lọc") -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Bản tin chọn lọc</h3>
+                <div class="picks-list">
+                    <!-- Pick 1 -->
+                    <div class="pick-item">
+                        <div class="pick-author-meta">
+                            <span class="author-avatar-mini">L</span>
+                            <span class="pick-author">Ban Nghiên Cứu Hệ Thống</span>
+                        </div>
+                        <h4 class="pick-headline" data-action="switch-tab-pub">Ứng dụng định luật Little giảm 42% thời gian chờ quy trình số.</h4>
+                        <span class="pick-time">2 ngày trước</span>
+                    </div>
+
+                    <!-- Pick 2 -->
+                    <div class="pick-item">
+                        <div class="pick-author-meta">
+                            <span class="author-avatar-mini">T</span>
+                            <span class="pick-author">Ban Tối Ưu Hóa SaaS</span>
+                        </div>
+                        <h4 class="pick-headline" data-action="switch-tab-pub">Toyota Production System trong văn phòng công nghệ: Từ lãng phí vật lý đến lãng phí số.</h4>
+                        <span class="pick-time">1 tuần trước</span>
+                    </div>
+
+                    <!-- Pick 3 -->
+                    <div class="pick-item">
+                        <div class="pick-author-meta">
+                            <span class="author-avatar-mini">A</span>
+                            <span class="pick-author">Ban Biên Soạn Tinh Gọn</span>
+                        </div>
+                        <h4 class="pick-headline" data-action="switch-tab-pub">Cân bằng Takt Time giữa con người và robot tự động hóa.</h4>
+                        <span class="pick-time">May 15</span>
+                    </div>
+                </div>
+                <a href="#publications" class="widget-footer-link btn-switch-tab" data-target="publications">Xem danh sách đầy đủ</a>
+            </div>
+
+            <!-- Callout Blue Card (Exact Medium style Writing card but for Leanity SaaS) -->
+            <div class="sidebar-widget blue-callout-card shadow-subtle">
+                <h4 class="callout-title">Leanity SaaS</h4>
+                <p class="callout-text">Ứng dụng ngay các phương pháp luận của Leanity Labs vào doanh nghiệp của bạn thông qua phần mềm Leanity SaaS.</p>
+                <div class="callout-bullets">
+                    <div class="bullet-item"><span class="bullet-check">✓</span> <span>Tự động dựng sơ đồ VSM</span></div>
+                    <div class="bullet-item"><span class="bullet-check">✓</span> <span>Định lượng thời gian lãng phí</span></div>
+                    <div class="bullet-item"><span class="bullet-check">✓</span> <span>Tối ưu hóa chu kỳ công việc</span></div>
+                </div>
+                <a href="https://leanity.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-pill btn-sm btn-block" style="background:#191919; margin-top: 14px;">Bắt đầu dùng thử</a>
+            </div>
+
+            <!-- Recommended Topics (Chủ đề Nghiên cứu) -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Chủ đề Nghiên cứu</h3>
+                <div class="tag-cloud">
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="systems">Queueing Theory</button>
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="systems">Little's Law</button>
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="lean">TPS Toyota</button>
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="lean">VSM Mapping</button>
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="optimization">SaaS Metrics</button>
+                    <button class="topic-tag btn-switch-tab" data-target="publications" data-filter="optimization">Operational ROI</button>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer -->
+            <footer class="sidebar-footer">
+                <a href="#about" class="s-footer-link btn-switch-tab" data-target="philosophy">Triết lý</a>
+                <a href="#simulator" class="s-footer-link btn-switch-tab" data-target="simulator">Bộ mô phỏng</a>
+                <a href="#publications" class="s-footer-link btn-switch-tab" data-target="publications">Ấn bản</a>
+                <a href="#connect" class="s-footer-link btn-switch-tab" data-target="connect">Hợp tác</a>
+                <div class="s-footer-copyright">&copy; 2026 Leanity Labs.</div>
+            </footer>
+        </aside>
+
+    </main>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
