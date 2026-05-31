@@ -94,7 +94,9 @@ async function fetchSanityArticles() {
     const query = encodeURIComponent(`*[_type == "post" || _type == "article"] | order(publishedAt desc) {
         _id,
         title,
+        slug,
         excerpt,
+        body,
         publishedAt,
         "authorName": author->name,
         "category": category->slug.current,
@@ -165,7 +167,7 @@ function generateArticleCardHTML(article, index) {
     }
 
     return `
-        <article class="paper-card" data-category="${article.category || 'systems'}">
+        <article class="paper-card" data-id="${article._id}" data-category="${article.category || 'systems'}" style="cursor: pointer;">
             <div class="paper-meta">
                 <span class="author-avatar-stub">LL</span>
                 <span class="author-name">${article.authorName || 'Leanity Labs Editorial Board'}</span>
@@ -208,6 +210,8 @@ function generateArticleCardHTML(article, index) {
 // 3. KHỞI TẠO BẢN KẾT XUẤT CHO TRANG CHỦ & PHÂN HỆ ẤN BẢN
 async function initSanityIntegration() {
     const articles = await fetchSanityArticles();
+    // Lưu trữ các bài viết vào biến toàn cục để truy xuất nhanh khi click
+    window.loadedArticles = articles;
     
     // 3.1. Kết xuất cho Trang Chủ (Home Feed - #sanity-latest-feed): Hiển thị tối đa 3 bài viết mới nhất
     const homeFeedContainer = document.getElementById("sanity-latest-feed");
@@ -299,4 +303,161 @@ document.addEventListener("DOMContentLoaded", () => {
             alert(`[Leanity Labs] Báo cáo nghiên cứu PDF:\n"${paperTitle}"\nđang được chuẩn bị phát hành chính thức trên thư viện mở SSRN và ResearchGate. Vui lòng quay lại tải bản in đầy đủ trong ít ngày tới!`);
         }
     });
+
+    // Ủy quyền click mở chi tiết bài viết (Premium Immersive Reading Modal)
+    document.addEventListener("click", function (e) {
+        const paperCard = e.target.closest(".paper-card");
+        if (paperCard) {
+            // Nếu click trúng nút tải hoặc vỗ tay thì bỏ qua
+            if (e.target.closest(".download-paper-btn") || e.target.closest(".clap-wrapper")) {
+                return;
+            }
+            
+            const articleId = paperCard.getAttribute("data-id");
+            if (articleId) {
+                openArticleModal(articleId);
+            }
+        }
+    });
+
+    // Ủy quyền click đóng modal
+    document.addEventListener("click", function (e) {
+        if (e.target.closest(".btn-close-modal") || e.target.classList.contains("reading-modal-overlay")) {
+            closeArticleModal();
+        }
+    });
+
+    // ESC key đóng modal
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeArticleModal();
+        }
+    });
 });
+
+/* ==========================================================================
+   Premium Reading Modal Operations & Rich Text Compiler (Portable Text)
+   ========================================================================== */
+
+// 1. Hàm phụ trợ trích xuất đường dẫn hình ảnh CDN từ Sanity Asset Reference
+function getSanityImageUrl(ref) {
+    if (!ref) return "";
+    const parts = ref.split("-");
+    if (parts.length < 4) return "";
+    const id = parts[1];
+    const dimensions = parts[2];
+    const extension = parts[3];
+    return `https://cdn.sanity.io/images/iymmq5x6/production/${id}-${dimensions}.${extension}`;
+}
+
+// 2. Trình biên dịch Portable Text sang HTML thuần
+function portableTextToHtml(blocks) {
+    if (!blocks || !Array.isArray(blocks)) return "";
+    
+    return blocks.map(block => {
+        if (block._type === 'block') {
+            const style = block.style || 'normal';
+            const childrenHtml = block.children.map(child => {
+                let text = child.text || "";
+                // Ngăn chặn XSS bằng cách mã hóa HTML kí tự đặc biệt
+                text = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                
+                if (child.marks && child.marks.length > 0) {
+                    child.marks.forEach(mark => {
+                        if (mark === 'strong') text = `<strong>${text}</strong>`;
+                        if (mark === 'em') text = `<em>${text}</em>`;
+                        if (mark === 'underline') text = `<u>${text}</u>`;
+                        if (mark === 'code') text = `<code>${text}</code>`;
+                        
+                        // Xử lý chèn Link liên kết ngoài
+                        if (block.markDefs) {
+                            const linkDef = block.markDefs.find(def => def._key === mark);
+                            if (linkDef && linkDef._type === 'link') {
+                                text = `<a href="${linkDef.href}" target="_blank" rel="noopener noreferrer" class="article-body-link">${text}</a>`;
+                            }
+                        }
+                    });
+                }
+                return text;
+            }).join("");
+            
+            switch (style) {
+                case 'h1': return `<h1 class="article-h1">${childrenHtml}</h1>`;
+                case 'h2': return `<h2 class="article-h2">${childrenHtml}</h2>`;
+                case 'h3': return `<h3 class="article-h3">${childrenHtml}</h3>`;
+                case 'h4': return `<h4 class="article-h4">${childrenHtml}</h4>`;
+                case 'blockquote': return `<blockquote class="article-blockquote">${childrenHtml}</blockquote>`;
+                default: return `<p class="article-p">${childrenHtml}</p>`;
+            }
+        } else if (block._type === 'image') {
+            const imgUrl = getSanityImageUrl(block.asset?._ref);
+            if (imgUrl) {
+                const altText = block.alt || "Hình ảnh minh họa";
+                const captionText = block.caption ? `<div class="body-image-caption">${block.caption}</div>` : "";
+                return `
+                    <div class="body-image-container">
+                        <img src="${imgUrl}" alt="${altText}" class="body-image" style="max-width:100%; border-radius:6px; border:1px solid var(--border-color); margin-top:12px;">
+                        ${captionText}
+                    </div>
+                `;
+            }
+        }
+        return "";
+    }).join("");
+}
+
+// 3. Hàm mở và điền nội dung vào Reading Modal
+function openArticleModal(id) {
+    const articles = window.loadedArticles || STATIC_FALLBACK_ARTICLES;
+    const article = articles.find(art => art._id === id);
+    if (!article) return;
+    
+    const modal = document.getElementById("reading-modal");
+    if (!modal) return;
+    
+    // Đổ tiêu đề và mô tả
+    modal.querySelector(".modal-article-title").textContent = article.title;
+    modal.querySelector(".modal-article-excerpt").textContent = article.excerpt || "";
+    
+    // Đổ metadata
+    modal.querySelector(".modal-author-name").textContent = article.authorName || 'Leanity Labs Editorial Board';
+    modal.querySelector(".modal-article-date").textContent = formatPublishedDate(article.publishedAt);
+    modal.querySelector(".modal-article-tag").textContent = article.categoryText || 'Nghiên cứu';
+    
+    // Thiết lập ảnh Hero nền lớn
+    const heroWrapper = document.getElementById("modal-hero-wrapper");
+    const heroImg = document.getElementById("modal-hero-image");
+    if (article.imageUrl && article.imageUrl !== "static") {
+        heroImg.src = article.imageUrl;
+        heroImg.alt = article.title;
+        heroWrapper.classList.remove("hidden");
+    } else {
+        heroWrapper.classList.add("hidden");
+    }
+    
+    // Xử lý Rich Text chi tiết trong thân bài
+    const bodyContainer = document.getElementById("modal-article-body");
+    if (article.body && article.body.length > 0) {
+        bodyContainer.innerHTML = portableTextToHtml(article.body);
+    } else {
+        // Fallback hiển thị tóm tắt/abstract nếu bài viết chưa có body chi tiết
+        const fallbackText = article.abstract || article.excerpt || "Nội dung bài viết chi tiết hiện đang được cập nhật.";
+        bodyContainer.innerHTML = `<p class="article-p" style="font-size:18px; line-height:1.8;">${fallbackText}</p>`;
+    }
+    
+    // Đổ lượt vỗ tay
+    modal.querySelector(".modal-clap-count").textContent = article.claps || 0;
+    
+    // Khóa cuộn trang chính và hiển thị Modal
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+}
+
+// 4. Hàm đóng Reading Modal
+function closeArticleModal() {
+    const modal = document.getElementById("reading-modal");
+    if (modal) {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+    }
+}
