@@ -10,6 +10,16 @@ export default {
       validation: Rule => Rule.required().min(10).max(120)
     },
     {
+      name: 'slug',
+      title: 'Đường dẫn liên kết (Slug)',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'excerpt',
       title: 'Đoạn trích / Tóm tắt ngắn',
       type: 'text',
