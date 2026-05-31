@@ -185,18 +185,8 @@ function generateArticleCardHTML(article, index) {
                 </div>
             </div>
 
-            <div class="paper-details" id="details-${article._id}">
-                <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
-                <p class="details-text">${article.abstract || 'Bản tóm tắt đang được hoàn thiện.'}</p>
-                <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
-                <ul class="citation-list">
-                    ${citationsHTML}
-                </ul>
-            </div>
-
             <div class="paper-actions">
                 <div class="actions-left">
-                    <button class="btn-text btn-toggle-abstract" data-target="details-${article._id}" aria-label="Xem tóm tắt bài viết" title="Hiển thị Abstract">Xem Abstract</button>
                     <span class="read-time">${article.readTime || 5} phút đọc</span>
                 </div>
                 
