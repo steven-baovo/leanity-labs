@@ -1,6 +1,5 @@
 @import "tailwindcss";
-
-:root {
+ 
 @theme {
   --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-merriweather), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;

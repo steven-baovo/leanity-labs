@@ -16,29 +16,29 @@ export default function RightSidebar() {
               <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">L</span>
               <span className="font-semibold text-text-primary">Ban Nghiên Cứu Hệ Thống</span>
             </div>
-            <Link href="/" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
+            <Link href="/post/ung-dung-dinh-luat-little-va-ly-thuyet-hang-doi-mm1" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
               Ứng dụng định luật Little giảm 42% thời gian chờ quy trình số.
             </Link>
             <span className="text-[0.72rem] text-text-muted">2 ngày trước</span>
           </div>
-
+ 
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2 text-[0.75rem]">
               <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">T</span>
               <span className="font-semibold text-text-primary">Ban Tối Ưu Hóa SaaS</span>
             </div>
-            <Link href="/" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
+            <Link href="/post/mo-hinh-hoa-so-do-dong-gia-tri-so" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
               Toyota Production System trong văn phòng công nghệ: Từ lãng phí vật lý đến lãng phí số.
             </Link>
             <span className="text-[0.72rem] text-text-muted">1 tuần trước</span>
           </div>
-
+ 
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2 text-[0.75rem]">
               <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">A</span>
               <span className="font-semibold text-text-primary">Ban Biên Soạn Tinh Gọn</span>
             </div>
-            <Link href="/" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
+            <Link href="/post/can-bang-takt-time-so" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
               Cân bằng Takt Time giữa con người và robot tự động hóa.
             </Link>
             <span className="text-[0.72rem] text-text-muted">May 15</span>

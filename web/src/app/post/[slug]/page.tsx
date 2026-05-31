@@ -7,9 +7,25 @@ import { Metadata } from "next";
 
 export const revalidate = 60;
 
+import { STATIC_FALLBACK_ARTICLES } from "@/sanity/fallbackData";
+
+async function getArticle(slug: string): Promise<Article | null> {
+  // Kiểm tra dữ liệu bài viết dự phòng (fallback) trước để hiển thị tức thì
+  const fallback = STATIC_FALLBACK_ARTICLES.find(a => a.slug.current === slug);
+  if (fallback) return fallback;
+
+  try {
+    const article = await client.fetch<Article>(getArticleBySlugQuery, { slug });
+    return article || null;
+  } catch (err) {
+    console.error(`Failed to fetch article for slug: ${slug}`, err);
+    return null;
+  }
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const article = await client.fetch<Article>(getArticleBySlugQuery, { slug });
+  const article = await getArticle(slug);
   
   if (!article) return { title: 'Bài viết không tồn tại | Leanity Labs' };
   
@@ -26,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = await client.fetch<Article>(getArticleBySlugQuery, { slug });
+  const article = await getArticle(slug);
 
   if (!article) {
     notFound();
