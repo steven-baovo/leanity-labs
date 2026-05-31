@@ -1,0 +1,18 @@
+{
+  "name": "leanity-labs-studio",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "devDependencies": {},
+  "dependencies": {
+    "sanity": "^3.45.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.11"
+  },
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  }
+}
