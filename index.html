@@ -248,6 +248,14 @@
                         <button class="btn btn-outline btn-pill btn-sm btn-switch-tab" data-target="publications">Xem Ấn bản Nghiên cứu</button>
                     </div>
                 </article>
+
+                <!-- SECTION: LATEST ARTICLES FROM SANITY.IO -->
+                <section class="latest-feed-section" style="margin-top: 48px; border-top: 1px solid var(--border-color); padding-top: 36px;">
+                    <h3 class="section-title" style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); margin-bottom: 24px;">Bài viết mới nhất</h3>
+                    <div id="sanity-latest-feed" class="publications-list">
+                        <!-- Dynamic Articles from Sanity CMS will render here -->
+                    </div>
+                </section>
             </div>
 
             <!-- Tab Content 2: Simulator Widget (Bento Style Card inside Feed) -->
@@ -338,178 +346,8 @@
                 </div>
 
                 <!-- Stream List (Exactly as screenshotted) -->
-                <div class="publications-list">
-                    <!-- Paper 1 -->
-                    <article class="paper-card" data-category="systems">
-                        <div class="paper-meta">
-                            <span class="author-avatar-stub">LL</span>
-                            <span class="author-name">Leanity Labs Editorial Board</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-date">March 2026</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-tag-text">Khoa học Hệ thống</span>
-                        </div>
-                        
-                        <div class="paper-body-wrapper">
-                            <div class="paper-main-content">
-                                <h3 class="paper-title">Ứng dụng Định luật Little và Lý thuyết Hàng đợi M/M/1 trong Tối ưu hóa Chu kỳ Vận hành SaaS</h3>
-                                <p class="paper-excerpt">Nghiên cứu ứng dụng toán học chỉ ra phương pháp giảm thiểu thắt nút cổ chai dữ liệu và rút ngắn thời gian chu kỳ trong quy trình vận hành của các công ty công nghệ số...</p>
-                            </div>
-                            
-                            <div class="paper-thumbnail">
-                                <svg class="thumb-svg" viewBox="0 0 100 100">
-                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
-                                    <circle cx="50" cy="50" r="30" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
-                                    <path d="M30 65 L45 40 L60 55 L80 30" fill="none" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round"/>
-                                    <circle cx="80" cy="30" r="3" fill="#5e6ad2"/>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="paper-details" id="details-paper-1">
-                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
-                            <p class="details-text">
-                                Nghiên cứu này giải quyết bài toán tối ưu hóa thời gian xử lý và giảm thiểu tồn đọng (work-in-progress) trong các hệ thống quy trình dịch vụ số. Bằng cách áp dụng mô hình hàng đợi M/M/1 truyền thống kết hợp với Định luật Little (L = λW), chúng tôi xây dựng một công thức tính toán năng suất biên cho phép các kiến trúc sư quy trình tự động xác định chính xác điểm tắc nghẽn thông tin. Kết quả thực nghiệm cho thấy việc ứng dụng công thức này vào bộ máy phân tích của Leanity SaaS giúp giảm trung bình 42% thời gian chu kỳ tổng thể của doanh nghiệp thử nghiệm.
-                            </p>
-                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
-                            <ul class="citation-list">
-                                <li>Little, J. D. (2011). "A Proof for the Queueing Formula: L = λW". <i>Operations Research</i>.</li>
-                                <li>Hopp, W. J., & Spearman, M. L. (2011). <i>Factory Physics</i> (3rd ed.). Waveland Press.</li>
-                            </ul>
-                        </div>
-
-                        <div class="paper-actions">
-                            <div class="actions-left">
-                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-1" aria-label="Xem tóm tắt bài viết số 1" title="Hiển thị Abstract" data-action="toggle-abstract-1">Xem Abstract</button>
-                                <span class="read-time">5 phút đọc</span>
-                            </div>
-                            
-                            <!-- Clapping and Bookmarks (Exact Medium detail) -->
-                            <div class="actions-right">
-                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
-                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                                    <span class="clap-count">482</span>
-                                </div>
-                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-1">
-                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Paper 2 -->
-                    <article class="paper-card" data-category="lean">
-                        <div class="paper-meta">
-                            <span class="author-avatar-stub">LL</span>
-                            <span class="author-name">Leanity Labs Editorial Board</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-date">January 2026</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-tag-text">Quản trị Tinh gọn</span>
-                        </div>
-                        
-                        <div class="paper-body-wrapper">
-                            <div class="paper-main-content">
-                                <h3 class="paper-title">Mô hình hóa Sơ đồ Dòng Giá trị Số (Digital Value Stream Mapping) trong Kỷ nguyên Chuyển đổi Số B2B</h3>
-                                <p class="paper-excerpt">Hệ thống hóa phương pháp vẽ sơ đồ dòng giá trị (VSM) truyền thống của Toyota thành công cụ đo đạc tự động thời gian thực bằng thuật toán thu thập dữ liệu...</p>
-                            </div>
-                            
-                            <div class="paper-thumbnail">
-                                <svg class="thumb-svg" viewBox="0 0 100 100">
-                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
-                                    <path d="M25 25 H 75 V 75 H 25 Z" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
-                                    <circle cx="40" cy="50" r="10" fill="#5e6ad2" opacity="0.1"/>
-                                    <circle cx="40" cy="50" r="3" fill="#5e6ad2"/>
-                                    <circle cx="65" cy="50" r="3" fill="#5e6ad2"/>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="paper-details" id="details-paper-2">
-                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
-                            <p class="details-text">
-                                Sơ đồ dòng giá trị (Value Stream Mapping - VSM) là công cụ tinh gọn kinh điển để xác định các lãng phí (Muda) trong sản xuất vật lý. Tuy nhiên, trong môi trường văn phòng số và dịch vụ phần mềm, các lãng phí này vô hình và cực kỳ khó đo đạc bằng phương pháp bấm giờ thủ công. Bài viết này giới thiệu mô hình "Digital VSM" - một hệ thống thuật toán tự động phân tích dấu vết luồng dữ liệu (activity logs) của nhân sự và hệ thống để tự động dựng lại bản đồ dòng giá trị thời gian thực. Mô hình này đã được cấu trúc hóa hoàn chỉnh để chạy ngầm trong phân hệ đo lường của Leanity SaaS.
-                            </p>
-                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
-                            <ul class="citation-list">
-                                <li>Rother, M., & Shook, J. (2003). <i>Learning to See: Value Stream Mapping to Add Value and Eliminate Muda</i>. Lean Enterprise Institute.</li>
-                                <li>Womack, J. P., & Jones, D. T. (2003). <i>Lean Thinking: Banish Waste and Create Wealth in Your Corporation</i>. Free Press.</li>
-                            </ul>
-                        </div>
-
-                        <div class="paper-actions">
-                            <div class="actions-left">
-                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-2" aria-label="Xem tóm tắt bài viết số 2" title="Hiển thị Abstract" data-action="toggle-abstract-2">Xem Abstract</button>
-                                <span class="read-time">7 phút đọc</span>
-                            </div>
-                            
-                            <div class="actions-right">
-                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
-                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                                    <span class="clap-count">319</span>
-                                </div>
-                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-2">
-                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Paper 3 -->
-                    <article class="paper-card" data-category="optimization">
-                        <div class="paper-meta">
-                            <span class="author-avatar-stub">LL</span>
-                            <span class="author-name">Leanity Labs Editorial Board</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-date">November 2025</span>
-                            <span class="meta-dot">·</span>
-                            <span class="paper-tag-text">Tối ưu hóa SaaS</span>
-                        </div>
-                        
-                        <div class="paper-body-wrapper">
-                            <div class="paper-main-content">
-                                <h3 class="paper-title">Cân bằng Takt Time Số: Triết lý TPS ứng dụng vào Thiết kế Luồng Tự động hóa Doanh nghiệp</h3>
-                                <p class="paper-excerpt">Phân tích chuyên sâu cách thức cân bằng nhịp độ sản sinh giá trị (Takt Time) trong các mô hình làm việc tự động giữa người và phần mềm hỗ trợ doanh nghiệp vừa và nhỏ...</p>
-                            </div>
-                            
-                            <div class="paper-thumbnail">
-                                <svg class="thumb-svg" viewBox="0 0 100 100">
-                                    <rect width="100" height="100" fill="#fafafa" rx="4"/>
-                                    <path d="M20 50 Q 35 20, 50 50 T 80 50" fill="none" stroke="#e6e6e6" stroke-width="1.5"/>
-                                    <circle cx="50" cy="50" r="4" fill="#5e6ad2"/>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="paper-details" id="details-paper-3">
-                            <h4 class="details-heading">Tóm tắt nghiên cứu (Abstract)</h4>
-                            <p class="details-text">
-                                Một trong những nguyên nhân lớn nhất khiến các dự án tự động hóa quy trình thất bại là sự mất cân bằng về năng lực xử lý giữa nhân sự và các bot/phần mềm tự động, tạo ra các hàng đợi công việc khổng lồ hoặc gây lãng phí tài nguyên máy tính. Nghiên cứu này ứng dụng triết lý Takt Time của Hệ thống sản xuất Toyota (TPS) để xây dựng thuật toán cân bằng tải luồng công việc số tự động (Digital Workload Balancing). Phương pháp này đã được ứng dụng trực tiếp trong lõi phân phối nhiệm vụ thông minh của Leanity SaaS.
-                            </p>
-                            <h4 class="details-heading">Tài liệu tham khảo chính (Citations)</h4>
-                            <ul class="citation-list">
-                                <li>Ohno, T. (1988). <i>Toyota Production System: Beyond Large-Scale Production</i>. Productivity Press.</li>
-                                <li>Liker, J. K. (2004). <i>The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer</i>. McGraw-Hill.</li>
-                            </ul>
-                        </div>
-
-                        <div class="paper-actions">
-                            <div class="actions-left">
-                                <button class="btn-text btn-toggle-abstract" data-target="details-paper-3" aria-label="Xem tóm tắt bài viết số 3" title="Hiển thị Abstract" data-action="toggle-abstract-3">Xem Abstract</button>
-                                <span class="read-time">6 phút đọc</span>
-                            </div>
-                            
-                            <div class="actions-right">
-                                <div class="clap-wrapper" title="Vỗ tay cổ vũ">
-                                    <svg class="clap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                                    <span class="clap-count">294</span>
-                                </div>
-                                <button class="btn-icon-download download-paper-btn" aria-label="Tải về bài báo nghiên cứu dạng PDF" title="Tải PDF" data-action="download-pdf-3">
-                                    <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
+                <div id="sanity-publications-feed" class="publications-list">
+                    <!-- Dynamic Articles from Sanity CMS will render here -->
                 </div>
             </div>
 
@@ -638,6 +476,7 @@
 
     <!-- Custom JS -->
     <script src="js/particles.js"></script>
+    <script src="js/sanity.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

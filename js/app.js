@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
        3. Academic Publications Filters (Bộ lọc Ấn bản)
        ========================================================================== */
     const filterButtons = document.querySelectorAll(".filter-btn");
-    const paperCards = document.querySelectorAll("#tab-publications .paper-card");
     
     filterButtons.forEach(btn => {
         btn.addEventListener("click", function () {
@@ -190,7 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
             
             const selectedCategory = this.getAttribute("data-category");
             
-            paperCards.forEach(card => {
+            // Query paper cards dynamically to support asynchronous Sanity CMS rendering!
+            const dynamicPaperCards = document.querySelectorAll("#tab-publications .paper-card");
+            
+            dynamicPaperCards.forEach(card => {
                 const cardCategory = card.getAttribute("data-category");
                 
                 if (selectedCategory === "all" || cardCategory === selectedCategory) {
