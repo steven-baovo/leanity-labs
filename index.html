@@ -167,16 +167,16 @@
             </a>
             
             <nav class="sidebar-nav" aria-label="Primary Navigation">
-                <a href="#about" class="sidebar-link active" title="Trang chủ" aria-label="Trang chủ">
+                <a href="#publications" class="sidebar-link active" title="Trang chủ" aria-label="Trang chủ">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     <span class="sidebar-text">Trang Chủ</span>
                 </a>
-                <a href="#publications" class="sidebar-link" title="Chuỗi nghiên cứu khoa học" aria-label="Chuỗi nghiên cứu">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                    <span class="sidebar-text">Chuỗi Nghiên Cứu</span>
-                </a>
-                <a href="#connect" class="sidebar-link" title="Giới thiệu & Hợp tác" aria-label="About Us">
+                <a href="#simulator" class="sidebar-link" title="Bộ mô phỏng Lean" aria-label="Bộ mô phỏng">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span class="sidebar-text">Bộ Mô Phỏng</span>
+                </a>
+                <a href="#about" class="sidebar-link" title="Giới thiệu & Triết lý" aria-label="Giới thiệu">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     <span class="sidebar-text">About Us</span>
                 </a>
             </nav>
@@ -206,13 +206,13 @@
             
             <!-- Feed Top Navigation Tabs -->
             <div class="feed-tabs" role="tablist" aria-label="Feed Tabs">
-                <button class="feed-tab active" role="tab" aria-selected="true" aria-controls="tab-philosophy" id="btn-tab-philosophy" data-tab="philosophy">Cho bạn (Triết lý)</button>
+                <button class="feed-tab active" role="tab" aria-selected="true" aria-controls="tab-publications" id="btn-tab-publications" data-tab="publications">Ấn Bản Mới</button>
+                <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-philosophy" id="btn-tab-philosophy" data-tab="philosophy">Triết Lý Vận Hành</button>
                 <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-simulator" id="btn-tab-simulator" data-tab="simulator">Bộ Mô Phỏng</button>
-                <button class="feed-tab" role="tab" aria-selected="false" aria-controls="tab-publications" id="btn-tab-publications" data-tab="publications">Ấn Bản Mới</button>
             </div>
 
             <!-- Tab Content 1: Philosophy (Default View) -->
-            <div id="tab-philosophy" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-philosophy">
+            <div id="tab-philosophy" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-philosophy">
                 
                 <!-- Pinned Story (Hero) -->
                 <header class="pinned-story-header">
@@ -249,13 +249,7 @@
                     </div>
                 </article>
 
-                <!-- SECTION: LATEST ARTICLES FROM SANITY.IO -->
-                <section class="latest-feed-section" style="margin-top: 48px; border-top: 1px solid var(--border-color); padding-top: 36px;">
-                    <h3 class="section-title" style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); margin-bottom: 24px;">Bài viết mới nhất</h3>
-                    <div id="sanity-latest-feed" class="publications-list">
-                        <!-- Dynamic Articles from Sanity CMS will render here -->
-                    </div>
-                </section>
+
             </div>
 
             <!-- Tab Content 2: Simulator Widget (Bento Style Card inside Feed) -->
@@ -332,7 +326,7 @@
             </div>
 
             <!-- Tab Content 3: Scholarly Publications (Medium Style Stream) -->
-            <div id="tab-publications" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-publications">
+            <div id="tab-publications" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-publications">
                 <div class="section-header">
                     <h2 class="section-title">Ấn Bản Khoa Học & Nghiên Cứu</h2>
                     <p class="section-subtitle">Danh mục tài liệu tổng hợp và các công trình ứng dụng lý thuyết tinh gọn số của Ban biên soạn.</p>
