@@ -85,6 +85,16 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'tags',
+      title: 'Từ khóa bài viết (Tags)',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags'
+      },
+      description: 'Nhập các thẻ từ khóa ngăn cách bằng phím Enter (ví dụ: Little\'s Law, SaaS, Queueing Theory).'
+    },
+    {
       name: 'readTime',
       title: 'Thời gian đọc (phút)',
       type: 'number',

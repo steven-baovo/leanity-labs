@@ -186,6 +186,7 @@ async function loadArticleDetail() {
             readTime,
             claps,
             citations,
+            tags,
             "imageUrl": mainImage.asset->url
         }`);
 
@@ -212,6 +213,21 @@ async function loadArticleDetail() {
         document.getElementById("post-date").textContent = formatPublishedDate(article.publishedAt);
         document.getElementById("post-category").textContent = article.categoryText || "Nghiên cứu";
         document.getElementById("post-clap-count").textContent = article.claps || 0;
+
+        // Đổ danh sách từ khóa bài viết (Tags)
+        const tagsContainer = document.getElementById("post-tags-container");
+        if (tagsContainer) {
+            if (article.tags && article.tags.length > 0) {
+                tagsContainer.innerHTML = article.tags.map(tag => `
+                    <span style="font-size: 12px; font-weight: 550; color: var(--text-secondary); background-color: var(--bg-surface-hover); border: 1px solid var(--border-color-dark); padding: 4px 10px; border-radius: var(--radius-pill); cursor: default; transition: var(--transition);">
+                        #${tag}
+                    </span>
+                `).join("");
+                tagsContainer.style.display = "flex";
+            } else {
+                tagsContainer.style.display = "none";
+            }
+        }
 
         // Thiết lập ảnh Hero lớn
         const heroWrapper = document.getElementById("post-hero-wrapper");
