@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+@theme {
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-merriweather), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-bg-dark: #ffffff;
+  --color-bg-surface: #fafaf9;
+  --color-bg-surface-hover: #f3f3f2;
+  --color-bg-card: rgba(250, 250, 249, 0.75);
+  --color-bg-card-hover: rgba(243, 243, 242, 0.95);
+  
+  --color-primary: #5e6ad2;
+  --color-primary-rgb: 94 106 210;
+  
+  --color-border-color: #f2f2f2;
+  --color-border-dark: #e6e6e6;
+  --color-border-strong: #a1a1aa;
+  
+  --color-text-primary: #191919;
+  --color-text-secondary: #6b6b75;
+  --color-text-muted: #8c8c96;
+
+  --radius-default: 8px;
+  --radius-pill: 9999px;
+
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-floating: 0 8px 24px rgba(0, 0, 0, 0.02);
+  --shadow-overlay: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-text-primary font-sans leading-relaxed min-h-screen overflow-x-hidden antialiased;
+  }
+}
