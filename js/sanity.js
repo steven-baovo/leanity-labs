@@ -316,7 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const articleId = paperCard.getAttribute("data-id");
             
             if (slug) {
-                window.location.href = `post.html?slug=${slug}`;
+                // Kiểm tra xem có đang chạy localhost không
+                const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+                window.location.href = isLocal ? `post.html?slug=${slug}` : `post/${slug}`;
             } else if (articleId) {
                 window.location.href = `post.html?id=${articleId}`;
             }

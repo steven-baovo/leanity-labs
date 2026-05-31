@@ -147,8 +147,18 @@ function portableTextToHtml(blocks) {
 async function loadArticleDetail() {
     // 3.1. Trích xuất slug hoặc id từ URL
     const urlParams = new URLSearchParams(window.location.search);
-    const slugParam = urlParams.get("slug");
-    const idParam = urlParams.get("id");
+    let slugParam = urlParams.get("slug");
+    let idParam = urlParams.get("id");
+    
+    // Fallback: Nếu không tìm thấy trong query string, tiến hành phân tích đường dẫn URL sạch (/post/slug)
+    if (!slugParam && !idParam) {
+        const pathParts = window.location.pathname.split("/");
+        const postIndex = pathParts.indexOf("post");
+        if (postIndex !== -1 && pathParts[postIndex + 1]) {
+            slugParam = pathParts[postIndex + 1];
+            console.log(`[Router] Đã trích xuất được slug từ URL sạch: ${slugParam}`);
+        }
+    }
     
     if (!slugParam && !idParam) {
         console.warn("Không tìm thấy đường dẫn hoặc mã số bài viết trong URL. Đang quay lại trang chủ...");
@@ -361,7 +371,10 @@ async function loadRelatedArticles(currentId, categorySlug, categoryText) {
                 thumbnailHTML = `<img src="${art.imageUrl}" alt="${art.title}" style="width:100%; height:110px; object-fit:cover; border-radius:4px; border:1px solid var(--border-color-dark);">`;
             }
             
-            const linkHref = art.slug?.current ? `post.html?slug=${art.slug.current}` : `post.html?id=${art._id}`;
+            const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            const linkHref = art.slug?.current 
+                ? (isLocal ? `post.html?slug=${art.slug.current}` : `post/${art.slug.current}`)
+                : `post.html?id=${art._id}`;
             
             return `
                 <a href="${linkHref}" style="text-decoration:none; display:flex; flex-direction:column; gap:10px; color:inherit; transition:var(--transition); padding:12px; border-radius:8px; border:1px solid var(--border-color); background-color:var(--bg-surface);" class="related-card">
