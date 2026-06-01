@@ -25,7 +25,7 @@ export default function RightSidebar() {
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2 text-[0.75rem]">
               <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">T</span>
-              <span className="font-semibold text-text-primary">Ban Tối Ưu Hóa SaaS</span>
+              <span className="font-semibold text-text-primary">Ban Khoa Học Hiệu Suất</span>
             </div>
             <Link href="/post/mo-hinh-hoa-so-do-dong-gia-tri-so" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
               Toyota Production System trong văn phòng công nghệ: Từ lãng phí vật lý đến lãng phí số.
@@ -54,7 +54,7 @@ export default function RightSidebar() {
           Chủ đề Nghiên cứu
         </h3>
         <div className="flex flex-wrap gap-2">
-          {["Queueing Theory", "Little's Law", "TPS Toyota", "VSM Mapping", "SaaS Metrics", "Operational ROI"].map((topic) => (
+          {["System Science", "Positive Psychology", "Performance Science", "Little's Law", "TPS Toyota", "Flow Dynamics"].map((topic) => (
             <button key={topic} className="bg-bg-surface border border-border-color py-1.5 px-3.5 rounded-full font-sans text-[0.75rem] font-medium text-text-secondary cursor-pointer transition-all duration-200 hover:bg-text-primary hover:text-white hover:border-text-primary">
               {topic}
             </button>

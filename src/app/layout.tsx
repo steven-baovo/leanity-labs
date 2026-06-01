@@ -20,8 +20,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Leanity Labs | Viện Nghiên cứu Hệ thống & Phương pháp luận Tinh gọn số",
-  description: "Tổ chức nghiên cứu khoa học hệ thống, toán học vận hành và kiến trúc tinh gọn số đứng sau nền tảng tối ưu hóa doanh nghiệp Leanity SaaS.",
+  title: "Leanity Labs | Ấn phẩm & Ban Biên tập Tri thức Khoa học Hệ thống, Tâm lý học Tích cực & Khoa học về Hiệu suất",
+  description: "Ấn phẩm chuyên biên soạn và chia sẻ kiến thức khoa học hệ thống, tâm lý học tích cực và khoa học về hiệu suất.",
 };
 
 export default function RootLayout({

@@ -17,8 +17,11 @@ export default function Header() {
         </button>
         
         <Link href="/" className="flex items-center gap-2 no-underline" aria-label="Leanity Labs Home">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#5e6ad2" stroke="#5e6ad2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg className="w-[18px] h-[18px]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="skewX(-14) translate(24, 0)">
+              <rect x="20" y="5" width="25" height="90" rx="7" fill="#5e6ad2" />
+              <rect x="53" y="55" width="25" height="40" rx="7" fill="#5e6ad2" />
+            </g>
           </svg>
           <span className="font-serif font-bold text-[1.15rem] tracking-[-0.02em] text-text-primary">
             Leanity <span className="text-primary">Labs</span>
@@ -40,28 +43,16 @@ export default function Header() {
       </div>
       
       <div className="flex items-center gap-5">
-        <a 
-          href="https://leanity.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <Link 
+          href="/contact" 
           className="flex items-center gap-2 bg-[#191919] text-white rounded-full py-2 px-4 font-sans text-sm font-semibold transition hover:bg-primary no-underline" 
-          title="Trải nghiệm Leanity SaaS"
+          title="Liên hệ Ban Biên soạn Leanity Labs"
         >
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
-          <span className="hidden sm:inline">Leanity SaaS</span>
-        </a>
-        
-        <Link href="/#connect" className="hidden sm:flex items-center gap-2 text-text-secondary font-sans text-[0.82rem] font-medium transition hover:text-text-primary no-underline" title="Gửi đề xuất hợp tác">
-          <svg className="w-[18px] h-[18px] text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-          </svg>
-          <span>Hợp Tác</span>
+          <span>Liên hệ</span>
         </Link>
         
         <button className="relative flex items-center justify-center p-1 text-text-secondary transition hover:text-text-primary" aria-label="Xem thông báo ấn bản mới" title="Thông báo">
