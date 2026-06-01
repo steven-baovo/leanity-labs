@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "@/components/RichTextComponents";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const revalidate = 60;
 
@@ -117,6 +118,31 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           )}
         </div>
       )}
+
+      {/* Department Bio Box for high E-E-A-T */}
+      <div className="mt-12 border-t border-border-color pt-8 flex gap-4 items-start">
+        <div className="w-12 h-12 rounded-full bg-primary/10 text-primary text-[0.85rem] font-serif font-extrabold flex items-center justify-center shrink-0">
+          {article.authorName ? article.authorName.substring(0, 2).toUpperCase() : 'LL'}
+        </div>
+        <div>
+          <h4 className="font-sans text-[0.95rem] font-bold text-text-primary mb-1.5">{article.authorName || 'Ban Biên tập Leanity Labs'}</h4>
+          <p className="text-[0.85rem] text-text-secondary leading-[1.6] m-0">
+            {article.authorName === "Ban Biên dịch Khoa học Hệ thống" && 
+              "Bộ phận chuyên trách khảo cứu, đối chiếu và Việt hóa các công trình nghiên cứu kinh điển về toán học vận hành, lý thuyết hàng đợi và mô hình hóa dòng chảy hệ thống phức tạp tại Leanity Labs."}
+            {article.authorName === "Ban Biên soạn Tâm lý học & Hiệu suất" && 
+              "Nhóm chuyên môn phụ trách khảo cứu chuyên sâu, đối chiếu đa nguồn và tổng hợp các chuyên luận ứng dụng thực tiễn về trạng thái trôi chảy (Flow State) và năng lượng nhận thức."}
+            {article.authorName === "Ban Biên soạn Khoa học Hiệu suất" && 
+              "Bộ phận phụ trách nghiên cứu các quy tắc nhịp độ (Takt Time), phân bổ tải công việc số và cân bằng năng lượng nhận thức của con người khi làm việc phối hợp cùng công nghệ."}
+            {(!article.authorName || (article.authorName !== "Ban Biên dịch Khoa học Hệ thống" && article.authorName !== "Ban Biên soạn Tâm lý học & Hiệu suất" && article.authorName !== "Ban Biên soạn Khoa học Hiệu suất")) && 
+              "Ban biên soạn học thuật tổng hợp tại Leanity Labs, chuyên trách khảo cứu, biên dịch và hệ thống hóa các tri thức về khoa học hệ thống, tâm lý học tích cực và hiệu suất."}
+          </p>
+          <div className="mt-3">
+            <Link href="/editorial-policy" className="text-[0.78rem] text-primary font-semibold hover:underline no-underline">
+              Tìm hiểu Quy chuẩn Biên soạn &amp; Thực nghiệm của chúng tôi &rarr;
+            </Link>
+          </div>
+        </div>
+      </div>
     </article>
   );
 }
