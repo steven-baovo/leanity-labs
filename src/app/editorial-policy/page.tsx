@@ -153,7 +153,7 @@ export default function EditorialPolicyPage() {
           <address className="not-italic bg-bg-surface border border-border-color rounded-default p-5 flex flex-col gap-2.5 text-[0.88rem] mt-2">
             <div><strong className="text-text-primary">Kênh đóng góp:</strong> <Link href="/contact" className="text-primary hover:underline font-medium">Biểu mẫu liên hệ học thuật</Link></div>
             <div><strong className="text-text-primary">Email ban biên soạn:</strong> <a href="mailto:contact@leanitylabs.com" className="text-primary hover:underline font-mono">contact@leanitylabs.com</a></div>
-            <div><strong className="text-text-primary">Văn phòng đối soát:</strong> 36 Đường số 4, Phường Thông Tây Hội, Gò Vấp, TP. Hồ Chí Minh, Việt Nam.</div>
+            <div><strong className="text-text-primary">Văn phòng đối soát:</strong> 36 Đường số 4, Phường Thông Tây Hội, TP. Hồ Chí Minh, Việt Nam.</div>
           </address>
         </section>
 

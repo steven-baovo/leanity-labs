@@ -54,7 +54,7 @@ export default async function Home() {
         "telephone": "+84-865-642-110",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "36 Đường số 4, Phường Thông Tây Hội, Gò Vấp",
+          "streetAddress": "36 Đường số 4, Phường Thông Tây Hội",
           "addressLocality": "Thành phố Hồ Chí Minh",
           "addressRegion": "TP. Hồ Chí Minh",
           "postalCode": "71426",

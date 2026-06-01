@@ -17,7 +17,7 @@ Tài liệu này lưu trữ toàn bộ thông tin định danh chính thức c�
 
 *   **Email liên hệ chính thức**: [contact@leanitylabs.com](mailto:contact@leanitylabs.com)
 *   **Hotline & Zalo hỗ trợ**: `086 564 2110` (Định dạng quốc tế: `+84-865-642-110`)
-*   **Địa chỉ văn phòng**: `36 Đường số 4, Phường Thông Tây Hội, Gò Vấp, TP. Hồ Chí Minh, Việt Nam`
+*   **Địa chỉ văn phòng**: `36 Đường số 4, Phường Thông Tây Hội, TP. Hồ Chí Minh, Việt Nam`
 *   **Mã bưu chính (Postal Code)**: `71426`
 *   **Thời gian làm việc (Opening Hours)**:
     *   Thứ Hai đến Thứ Sáu: `08:30` - `17:30`
@@ -29,8 +29,8 @@ Tài liệu này lưu trữ toàn bộ thông tin định danh chính thức c�
 
 *   **Vĩ độ (Latitude)**: `10.8326` (10°49'57.4" N)
 *   **Kinh độ (Longitude)**: `106.6631` (106°39'47.2" E)
-*   **Vị trí địa lý**: Phường Thông Tây Hội, Quận Gò Vấp, Thành phố Hồ Chí Minh.
-*   **Liên kết chỉ đường bản đồ thực tế**: [Đường đi tới văn phòng Leanity Labs](https://www.openstreetmap.org/search?query=36%20%C4%90%C6%B0%E1%BB%9Dng%20s%E1%BB%91%204%2C%20Ph%C6%B0%E1%BB%9Dng%20Th%C3%B4ng%20T%C3%A2y%20H%E1%BB%99i%2C%20G%C3%B2%20V%E1%BA%A5p%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh)
+*   **Vị trí địa lý**: Phường Thông Tây Hội, Thành phố Hồ Chí Minh.
+*   **Liên kết chỉ đường bản đồ thực tế**: [Đường đi tới văn phòng Leanity Labs](https://www.openstreetmap.org/search?query=36%20%C4%90%C6%B0%E1%BB%9Dng%20s%E1%BB%91%204%2C%20Ph%C6%B0%E1%BB%9Dng%20Th%C3%B4ng%20T%C3%A2y%20H%E1%BB%99i%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh)
 
 ---
 
@@ -88,7 +88,7 @@ Mẫu kịch bản dưới đây được nhúng trực tiếp vào mã nguồn 
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "36 Đường số 4, Phường Thông Tây Hội, Gò Vấp",
+          "streetAddress": "36 Đường số 4, Phường Thông Tây Hội",
           "addressLocality": "Thành phố Hồ Chí Minh",
           "addressRegion": "TP. Hồ Chí Minh",
           "postalCode": "71426",

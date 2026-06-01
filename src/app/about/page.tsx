@@ -150,7 +150,7 @@ export default function AboutPage() {
             <div><strong className="text-text-primary">Đơn vị chủ quản:</strong> Ban Biên Tập Leanity Labs</div>
             <div><strong className="text-text-primary">Email tiếp nhận:</strong> <a href="mailto:contact@leanitylabs.com" className="text-primary hover:underline font-mono">contact@leanitylabs.com</a></div>
             <div><strong className="text-text-primary">Hotline khoa học:</strong> <a href="tel:+84865642110" className="text-primary hover:underline font-mono">086 564 2110</a></div>
-            <div><strong className="text-text-primary">Văn phòng chính:</strong> 36 Đường số 4, Phường Thông Tây Hội, Gò Vấp, TP. Hồ Chí Minh, Việt Nam.</div>
+            <div><strong className="text-text-primary">Văn phòng chính:</strong> 36 Đường số 4, Phường Thông Tây Hội, TP. Hồ Chí Minh, Việt Nam.</div>
           </address>
         </section>
 

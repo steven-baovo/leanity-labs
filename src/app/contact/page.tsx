@@ -56,7 +56,7 @@ export default function ContactPage() {
           ],
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "36 Đường số 4, Phường Thông Tây Hội, Gò Vấp",
+            "streetAddress": "36 Đường số 4, Phường Thông Tây Hội",
             "addressLocality": "Thành phố Hồ Chí Minh",
             "addressRegion": "TP. Hồ Chí Minh",
             "postalCode": "71426",
@@ -186,7 +186,7 @@ export default function ContactPage() {
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-text-primary">Địa chỉ văn phòng:</span>
                     <span className="text-text-secondary leading-[1.5]">
-                      36 Đường số 4, Phường Thông Tây Hội, Gò Vấp, TP. Hồ Chí Minh.
+                      36 Đường số 4, Phường Thông Tây Hội, TP. Hồ Chí Minh.
                     </span>
                   </div>
                 </div>
