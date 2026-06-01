@@ -54,18 +54,6 @@ export default function Header() {
           </svg>
           <span>Liên hệ</span>
         </Link>
-        
-        <button className="relative flex items-center justify-center p-1 text-text-secondary transition hover:text-text-primary" aria-label="Xem thông báo ấn bản mới" title="Thông báo">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-          </svg>
-          <span className="absolute top-[2px] right-[2px] w-[6px] h-[6px] bg-red-500 rounded-full"></span>
-        </button>
-        
-        <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer border border-border-dark" title="Ban thư ký Học thuật Leanity Labs">
-          <span className="w-full h-full bg-[#e8f3ff] text-primary font-sans text-[0.72rem] font-bold flex items-center justify-center">LL</span>
-        </div>
       </div>
     </header>
   );
