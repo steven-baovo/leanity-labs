@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { extractExternalLinks, fetchTitleFromUrl } from "@/utils/extractLinks";
+import { calculateReadTime } from "@/utils/readTime";
 
 export const revalidate = 60;
 
@@ -56,6 +57,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!article) {
     notFound();
   }
+
+  const readTime = calculateReadTime(article.body, article.readTime);
 
   // Tự động trích xuất và truy xuất tiêu đề cho các link tài liệu ngoài
   const extracted = article.body ? extractExternalLinks(article.body) : [];
@@ -111,7 +114,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <span className="bg-bg-surface py-1 px-3 rounded-full text-[0.75rem] font-bold text-primary uppercase tracking-[0.05em]">
             {article.categoryText || 'Nghiên cứu'}
           </span>
-          <span className="text-text-muted text-[0.8rem]">{article.readTime || 5} phút đọc</span>
+          <span className="text-text-muted text-[0.8rem]">{readTime} phút đọc</span>
         </div>
         
         <h1 className="font-serif font-extrabold text-[clamp(2.2rem,5vw,3rem)] leading-[1.1] mb-6 tracking-[-0.02em] text-text-primary">

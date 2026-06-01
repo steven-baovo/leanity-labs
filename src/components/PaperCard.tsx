@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { Article } from '@/sanity/queries';
+import { calculateReadTime } from '@/utils/readTime';
 
 interface PaperCardProps {
   article: Article;
 }
 
 export default function PaperCard({ article }: PaperCardProps) {
+  const readTime = calculateReadTime(article.body, article.readTime);
+
   // Simple format date
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
@@ -54,7 +57,7 @@ export default function PaperCard({ article }: PaperCardProps) {
 
       <div className="flex justify-between items-center mt-3">
         <div className="flex items-center gap-3">
-          <span className="text-[0.75rem] text-text-muted">{article.readTime || 5} phút đọc</span>
+          <span className="text-[0.75rem] text-text-muted">{readTime} phút đọc</span>
         </div>
         
         <div className="flex items-center gap-4">
