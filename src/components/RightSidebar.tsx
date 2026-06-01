@@ -27,6 +27,37 @@ async function getWeeklySignalArticles(): Promise<Article[]> {
   return STATIC_FALLBACK_ARTICLES.filter(a => a.tags && a.tags.includes("Weekly Signal"));
 }
 
+interface Category {
+  _id: string;
+  title: string;
+  slug: string;
+}
+
+const getCategoriesQuery = groq`
+  *[_type == "category"] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current
+  }
+`;
+
+async function getCategories(): Promise<Category[]> {
+  try {
+    const categories = await client.fetch<Category[]>(getCategoriesQuery);
+    if (categories && categories.length > 0) return categories;
+  } catch (err) {
+    console.error("Failed to fetch categories", err);
+  }
+  return [
+    { _id: "cat-1", title: "System Science", slug: "system-science" },
+    { _id: "cat-2", title: "Positive Psychology", slug: "positive-psychology" },
+    { _id: "cat-3", title: "Performance Science", slug: "performance-science" },
+    { _id: "cat-4", title: "Little's Law", slug: "littles-law" },
+    { _id: "cat-5", title: "TPS Toyota", slug: "tps-toyota" },
+    { _id: "cat-6", title: "Flow Dynamics", slug: "flow-dynamics" }
+  ];
+}
+
 function formatDate(dateStr: string): string {
   try {
     const date = new Date(dateStr);
@@ -38,6 +69,7 @@ function formatDate(dateStr: string): string {
 
 export default async function RightSidebar() {
   const weeklySignalArticles = await getWeeklySignalArticles();
+  const categories = await getCategories();
 
   return (
     <aside 
@@ -80,9 +112,9 @@ export default async function RightSidebar() {
           Chủ đề Nghiên cứu
         </h3>
         <div className="flex flex-wrap gap-2">
-          {["System Science", "Positive Psychology", "Performance Science", "Little's Law", "TPS Toyota", "Flow Dynamics"].map((topic) => (
-            <button key={topic} className="bg-bg-surface border border-border-color py-1.5 px-3.5 rounded-full font-sans text-[0.75rem] font-medium text-text-secondary cursor-pointer transition-all duration-200 hover:bg-text-primary hover:text-white hover:border-text-primary">
-              {topic}
+          {categories.map((category) => (
+            <button key={category._id} className="bg-bg-surface border border-border-color py-1.5 px-3.5 rounded-full font-sans text-[0.75rem] font-medium text-text-secondary cursor-pointer transition-all duration-200 hover:bg-text-primary hover:text-white hover:border-text-primary">
+              {category.title}
             </button>
           ))}
         </div>
