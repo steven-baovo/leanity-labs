@@ -88,10 +88,10 @@ export default function Header() {
                 <h4 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.05em] text-primary">Các trang chính</h4>
                 <nav className="flex flex-col gap-3">
                   {[
-                    { label: "Trang chủ Ấn phẩm", href: "/" },
-                    { label: "Về chúng tôi (About)", href: "/about" },
-                    { label: "Chính sách Biên soạn", href: "/editorial-policy" },
-                    { label: "Liên hệ hợp tác", href: "/contact" }
+                    { label: "Trang chủ", href: "/" },
+                    { label: "Về chúng tôi", href: "/about" },
+                    { label: "Chính sách biên soạn", href: "/editorial-policy" },
+                    { label: "Liên hệ", href: "/contact" }
                   ].map((link) => (
                     <Link
                       key={link.href}
@@ -107,12 +107,12 @@ export default function Header() {
 
               {/* Column 2: Research Areas */}
               <div className="flex flex-col gap-4">
-                <h4 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.05em] text-primary">Chủ đề Nghiên cứu</h4>
+                <h4 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.05em] text-primary">Chủ đề nghiên cứu</h4>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: "Khoa học Hệ thống (System Science)", desc: "Mô phỏng tối ưu quy trình và cấu trúc hệ thống." },
-                    { label: "Tâm lý học Tích cực (Positive Psychology)", desc: "Trạng thái trôi chảy (Flow State) và sức khỏe nhận thức." },
-                    { label: "Khoa học về Hiệu suất (Performance Science)", desc: "Triết lý TPS, Takt Time và nhịp điệu làm việc số." }
+                    { label: "Khoa học hệ thống (System Science)", desc: "Mô phỏng tối ưu quy trình và cấu trúc hệ thống." },
+                    { label: "Tâm lý học tích cực (Positive Psychology)", desc: "Trạng thái trôi chảy (Flow State) và sức khỏe nhận thức." },
+                    { label: "Khoa học về hiệu suất (Performance Science)", desc: "Triết lý TPS, Takt Time và nhịp điệu làm việc số." }
                   ].map((topic, i) => (
                     <Link
                       key={i}
@@ -129,11 +129,11 @@ export default function Header() {
 
               {/* Column 3: Policy & Legal */}
               <div className="flex flex-col gap-4">
-                <h4 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.05em] text-primary">Pháp lý & Quy chuẩn</h4>
+                <h4 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.05em] text-primary">Pháp lý & quy chuẩn</h4>
                 <nav className="flex flex-col gap-3">
                   {[
-                    { label: "Chính sách Bảo mật", href: "/privacy" },
-                    { label: "Điều khoản Sử dụng", href: "/terms" }
+                    { label: "Chính sách bảo mật", href: "/privacy" },
+                    { label: "Điều khoản sử dụng", href: "/terms" }
                   ].map((link) => (
                     <Link
                       key={link.href}

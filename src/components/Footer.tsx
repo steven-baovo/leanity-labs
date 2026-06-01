@@ -24,30 +24,30 @@ export default function Footer() {
 
         {/* Col 2: Academic & Philosophy */}
         <div className="flex flex-col gap-4">
-          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Ấn Bản & Triết Lý</h4>
+          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Ấn bản & triết lý</h4>
           <ul className="list-none flex flex-col gap-3 m-0 p-0">
-            <li><Link href="/" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Trang Chủ Ấn Bản</Link></li>
-            <li><Link href="/editorial-policy" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Quy trình Kiểm duyệt</Link></li>
-            <li><Link href="/about#funding" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Minh bạch Tài trợ</Link></li>
+            <li><Link href="/" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Trang chủ</Link></li>
+            <li><Link href="/editorial-policy" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Quy trình kiểm duyệt</Link></li>
+            <li><Link href="/about#funding" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Minh bạch tài trợ</Link></li>
           </ul>
         </div>
 
         {/* Col 3: Compliance & Legal */}
         <div className="flex flex-col gap-4">
-          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Chính Sách & Pháp Lý</h4>
+          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Chính sách & pháp lý</h4>
           <ul className="list-none flex flex-col gap-3 m-0 p-0">
-            <li><Link href="/about" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Giới thiệu Dự án</Link></li>
-            <li><Link href="/privacy" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Chính sách Bảo mật</Link></li>
-            <li><Link href="/terms" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Điều khoản Sử dụng</Link></li>
-            <li><Link href="/about#contributors" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Ban Biên soạn</Link></li>
+            <li><Link href="/about" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Giới thiệu dự án</Link></li>
+            <li><Link href="/privacy" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Chính sách bảo mật</Link></li>
+            <li><Link href="/terms" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Điều khoản sử dụng</Link></li>
+            <li><Link href="/about#contributors" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Ban biên soạn</Link></li>
           </ul>
         </div>
 
         {/* Col 4: Contact & Connection */}
         <div className="flex flex-col gap-4">
-          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Kết Nối</h4>
+          <h4 className="font-sans text-[0.9rem] font-bold text-text-primary uppercase tracking-[0.05em] mb-2">Kết nối</h4>
           <ul className="list-none flex flex-col gap-3 m-0 p-0">
-            <li><Link href="/contact" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Thông tin Liên hệ</Link></li>
+            <li><Link href="/contact" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">Thông tin liên hệ</Link></li>
             <li><a href="mailto:contact@leanitylabs.com" className="no-underline text-[0.85rem] text-text-secondary transition-colors hover:text-primary">contact@leanitylabs.com</a></li>
           </ul>
         </div>

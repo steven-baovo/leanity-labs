@@ -109,7 +109,7 @@ export default async function RightSidebar() {
 
       <div className="flex flex-col">
         <h3 className="font-sans text-[0.85rem] font-bold uppercase tracking-[0.05em] text-text-primary mb-[18px]">
-          Chủ đề Nghiên cứu
+          Chủ đề nghiên cứu
         </h3>
         <div className="flex flex-wrap gap-2">
           {categories.map((category) => (
