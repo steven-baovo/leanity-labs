@@ -1,6 +1,44 @@
 import Link from 'next/link';
+import { client } from "@/sanity/client";
+import { Article } from "@/sanity/queries";
+import { groq } from "next-sanity";
+import { STATIC_FALLBACK_ARTICLES } from '@/sanity/fallbackData';
 
-export default function RightSidebar() {
+const getWeeklySignalArticlesQuery = groq`
+  *[_type == "post" && "Weekly Signal" in tags] | order(publishedAt desc)[0...5] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    "authorName": author->name,
+    "category": category->slug.current,
+    "categoryText": category->title,
+    readTime
+  }
+`;
+
+async function getWeeklySignalArticles(): Promise<Article[]> {
+  try {
+    const articles = await client.fetch<Article[]>(getWeeklySignalArticlesQuery);
+    if (articles && articles.length > 0) return articles;
+  } catch (err) {
+    console.error("Failed to fetch weekly signal articles", err);
+  }
+  return STATIC_FALLBACK_ARTICLES.filter(a => a.tags && a.tags.includes("Weekly Signal"));
+}
+
+function formatDate(dateStr: string): string {
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('vi-VN', { month: 'short', day: 'numeric' });
+  } catch (e) {
+    return dateStr;
+  }
+}
+
+export default async function RightSidebar() {
+  const weeklySignalArticles = await getWeeklySignalArticles();
+
   return (
     <aside 
       className="w-[320px] p-10 sticky top-[57px] h-[calc(100vh-57px)] overflow-y-auto shrink-0 hidden lg:flex flex-col gap-9 bg-bg-dark [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" 
@@ -8,41 +46,29 @@ export default function RightSidebar() {
     >
       <div className="flex flex-col">
         <h3 className="font-sans text-[0.85rem] font-bold uppercase tracking-[0.05em] text-text-primary mb-[18px]">
-          Bản tin chọn lọc
+          Weekly Signal
         </h3>
         <div className="flex flex-col gap-[18px]">
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2 text-[0.75rem]">
-              <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">L</span>
-              <span className="font-semibold text-text-primary">Ban Nghiên Cứu Hệ Thống</span>
-            </div>
-            <Link href="/post/ung-dung-dinh-luat-little-va-ly-thuyet-hang-doi-mm1" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
-              Ứng dụng định luật Little giảm 42% thời gian chờ quy trình số.
-            </Link>
-            <span className="text-[0.72rem] text-text-muted">2 ngày trước</span>
-          </div>
- 
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2 text-[0.75rem]">
-              <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">T</span>
-              <span className="font-semibold text-text-primary">Ban Khoa Học Hiệu Suất</span>
-            </div>
-            <Link href="/post/mo-hinh-hoa-so-do-dong-gia-tri-so" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
-              Toyota Production System trong văn phòng công nghệ: Từ lãng phí vật lý đến lãng phí số.
-            </Link>
-            <span className="text-[0.72rem] text-text-muted">1 tuần trước</span>
-          </div>
- 
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2 text-[0.75rem]">
-              <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">A</span>
-              <span className="font-semibold text-text-primary">Ban Biên Soạn Tinh Gọn</span>
-            </div>
-            <Link href="/post/can-bang-takt-time-so" className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline">
-              Cân bằng Takt Time giữa con người và robot tự động hóa.
-            </Link>
-            <span className="text-[0.72rem] text-text-muted">May 15</span>
-          </div>
+          {weeklySignalArticles.map((article) => {
+            const initial = article.authorName ? article.authorName.charAt(0).toUpperCase() : 'L';
+            return (
+              <div key={article._id} className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-2 text-[0.75rem]">
+                  <span className="w-4 h-4 rounded-full bg-text-secondary text-white text-[0.5rem] font-extrabold flex items-center justify-center">
+                    {initial}
+                  </span>
+                  <span className="font-semibold text-text-primary">{article.authorName || 'Ban Biên soạn'}</span>
+                </div>
+                <Link 
+                  href={`/post/${article.slug.current}`} 
+                  className="font-serif text-[0.92rem] font-bold leading-[1.4] text-text-primary cursor-pointer transition-colors duration-200 hover:text-primary no-underline"
+                >
+                  {article.title}
+                </Link>
+                <span className="text-[0.72rem] text-text-muted">{formatDate(article.publishedAt)}</span>
+              </div>
+            );
+          })}
         </div>
         <Link href="/" className="text-[0.78rem] text-primary no-underline mt-[14px] font-semibold hover:underline">
           Xem danh sách đầy đủ

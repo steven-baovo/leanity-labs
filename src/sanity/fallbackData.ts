@@ -17,6 +17,7 @@ export const STATIC_FALLBACK_ARTICLES: Article[] = [
       "Little, J. D. (2011). \"A Proof for the Queueing Formula: L = λW\". Operations Research.",
       "Hopp, W. J., & Spearman, M. L. (2011). Factory Physics (3rd ed.). Waveland Press."
     ],
+    tags: ["Weekly Signal"],
     imageUrl: "",
     body: [
       {
@@ -73,6 +74,7 @@ export const STATIC_FALLBACK_ARTICLES: Article[] = [
       "Csikszentmihalyi, M. (1990). Flow: The Psychology of Optimal Experience. Harper & Row.",
       "Seligman, M. E. P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being. Free Press."
     ],
+    tags: ["Weekly Signal"],
     imageUrl: "",
     body: [
       {
