@@ -5,6 +5,7 @@ import { RichTextComponents } from "@/components/RichTextComponents";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
+import { extractExternalLinks, fetchTitleFromUrl } from "@/utils/extractLinks";
 
 export const revalidate = 60;
 
@@ -48,6 +49,21 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!article) {
     notFound();
   }
+
+  // Tự động trích xuất và truy xuất tiêu đề cho các link tài liệu ngoài
+  const extracted = article.body ? extractExternalLinks(article.body) : [];
+  const autoCitations = await Promise.all(
+    extracted.map(async (link) => {
+      const title = await fetchTitleFromUrl(link.href);
+      return {
+        text: link.text,
+        href: link.href,
+        resolvedTitle: title || link.text,
+      };
+    })
+  );
+
+  const hasCitations = (article.citations && article.citations.length > 0) || autoCitations.length > 0;
 
   return (
     <article className="max-w-[800px] mx-auto pb-16">
@@ -95,7 +111,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </div>
       
       {/* Abstract and Citations */}
-      {(article.abstract || (article.citations && article.citations.length > 0)) && (
+      {(article.abstract || hasCitations) && (
         <div className="mt-16 bg-bg-surface border border-border-color rounded-default p-6">
           {article.abstract && (
             <div className="mb-6">
@@ -104,13 +120,24 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
           )}
           
-          {article.citations && article.citations.length > 0 && (
+          {hasCitations && (
             <div>
               <h4 className="font-sans text-[0.8rem] font-bold uppercase tracking-[0.05em] text-primary mb-3">Tài liệu tham khảo</h4>
-              <ul className="list-none flex flex-col gap-1.5 m-0 p-0">
-                {article.citations.map((citation, idx) => (
-                  <li key={idx} className="text-[0.75rem] text-text-secondary pl-2.5 relative before:content-['•'] before:absolute before:left-0 before:text-primary">
+              <ul className="list-none flex flex-col gap-2.5 m-0 p-0">
+                {/* Tài liệu nhập tay thủ công */}
+                {article.citations?.map((citation, idx) => (
+                  <li key={`manual-${idx}`} className="text-[0.75rem] text-text-secondary pl-2.5 relative before:content-['•'] before:absolute before:left-0 before:text-primary">
                     {citation}
+                  </li>
+                ))}
+                {/* Tài liệu trích xuất tự động */}
+                {autoCitations.map((citation, idx) => (
+                  <li key={`auto-${idx}`} className="text-[0.75rem] text-text-secondary pl-2.5 relative before:content-['•'] before:absolute before:left-0 before:text-primary">
+                    <span className="font-medium text-text-primary">{citation.resolvedTitle}</span>
+                    {" — "}
+                    <a href={citation.href} target="_blank" rel="noreferrer noopener" className="text-primary hover:underline break-all">
+                      {citation.href}
+                    </a>
                   </li>
                 ))}
               </ul>
