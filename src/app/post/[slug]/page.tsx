@@ -104,7 +104,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="max-w-[800px] mx-auto pb-16">
+      <article className="max-w-[680px] mx-auto pb-16">
       {/* Article Header */}
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-6">
