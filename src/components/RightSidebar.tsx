@@ -73,7 +73,7 @@ export default async function RightSidebar() {
 
   return (
     <aside 
-      className="w-[320px] p-10 sticky top-[57px] h-[calc(100vh-57px)] overflow-y-auto shrink-0 hidden lg:flex flex-col gap-9 bg-bg-dark [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" 
+      className="lg:w-[22.2%] p-10 sticky top-[57px] h-[calc(100vh-57px)] overflow-y-auto shrink-0 hidden lg:flex flex-col gap-9 bg-bg-dark [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" 
       aria-label="Right Sidebar Widgets"
     >
       <div className="flex flex-col">
