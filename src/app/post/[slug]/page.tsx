@@ -127,14 +127,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div>
           <h4 className="font-sans text-[0.95rem] font-bold text-text-primary mb-1.5">{article.authorName || 'Ban Biên tập Leanity Labs'}</h4>
           <p className="text-[0.85rem] text-text-secondary leading-[1.6] m-0">
-            {article.authorName === "Ban Biên dịch Khoa học Hệ thống" && 
-              "Bộ phận chuyên trách khảo cứu, đối chiếu và Việt hóa các công trình nghiên cứu kinh điển về toán học vận hành, lý thuyết hàng đợi và mô hình hóa dòng chảy hệ thống phức tạp tại Leanity Labs."}
-            {article.authorName === "Ban Biên soạn Tâm lý học & Hiệu suất" && 
-              "Nhóm chuyên môn phụ trách khảo cứu chuyên sâu, đối chiếu đa nguồn và tổng hợp các chuyên luận ứng dụng thực tiễn về trạng thái trôi chảy (Flow State) và năng lượng nhận thức."}
-            {article.authorName === "Ban Biên soạn Khoa học Hiệu suất" && 
-              "Bộ phận phụ trách nghiên cứu các quy tắc nhịp độ (Takt Time), phân bổ tải công việc số và cân bằng năng lượng nhận thức của con người khi làm việc phối hợp cùng công nghệ."}
-            {(!article.authorName || (article.authorName !== "Ban Biên dịch Khoa học Hệ thống" && article.authorName !== "Ban Biên soạn Tâm lý học & Hiệu suất" && article.authorName !== "Ban Biên soạn Khoa học Hiệu suất")) && 
-              "Ban biên soạn học thuật tổng hợp tại Leanity Labs, chuyên trách khảo cứu, biên dịch và hệ thống hóa các tri thức về khoa học hệ thống, tâm lý học tích cực và hiệu suất."}
+            {article.authorName === "Ban Biên soạn Khoa học Hệ thống" && 
+              "Bộ phận chuyên môn chịu trách nhiệm khảo cứu chuyên sâu, biên dịch và tổng hợp các công trình khoa học kinh điển về lý thuyết hệ thống, lý thuyết hàng đợi và mô phỏng tối ưu dòng chảy."}
+            {article.authorName === "Ban Biên soạn Tâm lý học Tích cực" && 
+              "Nhóm chuyên trách khảo cứu và đúc kết các chuyên luận khoa học về trạng thái trải nghiệm tối ưu (Flow State), tư duy phát triển và năng lực tự điều chỉnh năng lượng nhận thức lành mạnh."}
+            {article.authorName === "Ban Biên soạn Khoa học về Hiệu suất" && 
+              "Bộ phận chuyên môn chịu trách nhiệm nghiên cứu các quy chuẩn nhịp độ (Takt Time), phương pháp giảm tải nhận thức và thiết lập nhịp điệu sinh học tối ưu khi con người phối hợp cùng công nghệ số."}
+            {(!article.authorName || (article.authorName !== "Ban Biên soạn Khoa học Hệ thống" && article.authorName !== "Ban Biên soạn Tâm lý học Tích cực" && article.authorName !== "Ban Biên soạn Khoa học về Hiệu suất")) && 
+              "Ban biên soạn học thuật tích hợp tại Leanity Labs, chuyên trách khảo cứu, biên dịch và hệ thống hóa các tri thức về khoa học hệ thống, tâm lý học tích cực và khoa học về hiệu suất."}
           </p>
           <div className="mt-3">
             <Link href="/editorial-policy" className="text-[0.78rem] text-primary font-semibold hover:underline no-underline">
