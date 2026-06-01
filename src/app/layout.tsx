@@ -20,8 +20,39 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Leanity Labs | Ấn phẩm & Ban Biên tập Tri thức Khoa học Hệ thống, Tâm lý học Tích cực & Khoa học về Hiệu suất",
+  metadataBase: new URL("https://leanitylabs.com"),
+  title: {
+    default: "Leanity Labs | Ấn phẩm & Ban Biên tập Tri thức Khoa học Hệ thống, Tâm lý học Tích cực & Khoa học về Hiệu suất",
+    template: "%s | Leanity Labs"
+  },
   description: "Ấn phẩm chuyên biên soạn và chia sẻ kiến thức khoa học hệ thống, tâm lý học tích cực và khoa học về hiệu suất.",
+  alternates: {
+    canonical: "./",
+  },
+  openGraph: {
+    title: "Leanity Labs | Ấn phẩm & Ban Biên tập Tri thức Khoa học Hệ thống, Tâm lý học Tích cực & Khoa học về Hiệu suất",
+    description: "Ấn phẩm chuyên biên soạn và chia sẻ kiến thức khoa học hệ thống, tâm lý học tích cực và khoa học về hiệu suất.",
+    url: "https://leanitylabs.com",
+    siteName: "Leanity Labs",
+    locale: "vi_VN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Leanity Labs",
+    description: "Ấn phẩm chuyên biên soạn và chia sẻ kiến thức khoa học hệ thống, tâm lý học tích cực và khoa học về hiệu suất.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

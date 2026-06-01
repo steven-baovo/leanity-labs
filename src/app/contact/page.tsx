@@ -81,7 +81,7 @@ export default function ContactPage() {
           },
           "sameAs": [
             "https://github.com/leanity-labs",
-            "https://linkedin.com/company/leanity-labs",
+            "https://linkedin.com/in/leanitylabs",
             "https://www.researchgate.net"
           ]
         }

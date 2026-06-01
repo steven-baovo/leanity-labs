@@ -32,12 +32,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!article) return { title: 'Bài viết không tồn tại | Leanity Labs' };
   
   return {
-    title: `${article.title} | Leanity Labs`,
+    title: article.title,
     description: article.excerpt || "Bài phân tích nghiên cứu khoa học chuyên sâu từ Leanity Labs.",
+    alternates: {
+      canonical: `/post/${slug}`,
+    },
     openGraph: {
       title: article.title,
-      description: article.excerpt,
-      images: article.imageUrl ? [article.imageUrl] : [],
+      description: article.excerpt || "Bài phân tích nghiên cứu khoa học chuyên sâu từ Leanity Labs.",
+      url: `https://leanitylabs.com/post/${slug}`,
+      type: "article",
+      publishedTime: article.publishedAt ? new Date(article.publishedAt).toISOString() : undefined,
+      authors: [article.authorName || "Leanity Labs"],
+      images: article.imageUrl ? [{ url: article.imageUrl }] : [],
     }
   };
 }
@@ -65,8 +72,39 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   const hasCitations = (article.citations && article.citations.length > 0) || autoCitations.length > 0;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `https://leanitylabs.com/post/${slug}#blogposting`,
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://leanitylabs.com/#website",
+      "url": "https://leanitylabs.com",
+      "name": "Leanity Labs"
+    },
+    "headline": article.title,
+    "description": article.excerpt || "Bài phân tích nghiên cứu khoa học chuyên sâu từ Leanity Labs.",
+    "datePublished": article.publishedAt ? new Date(article.publishedAt).toISOString() : new Date().toISOString(),
+    "dateModified": article.publishedAt ? new Date(article.publishedAt).toISOString() : new Date().toISOString(),
+    "mainEntityOfPage": `https://leanitylabs.com/post/${slug}`,
+    "image": article.imageUrl ? [article.imageUrl] : ["https://leanitylabs.com/logo.png"],
+    "author": {
+      "@type": "Organization",
+      "@id": "https://leanitylabs.com/#organization",
+      "name": article.authorName || "Leanity Labs"
+    },
+    "publisher": {
+      "@id": "https://leanitylabs.com/#organization"
+    }
+  };
+
   return (
-    <article className="max-w-[800px] mx-auto pb-16">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <article className="max-w-[800px] mx-auto pb-16">
       {/* Article Header */}
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-6">
@@ -171,5 +209,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
     </article>
+    </>
   );
 }

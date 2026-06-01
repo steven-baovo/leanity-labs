@@ -37,7 +37,7 @@ Tài liệu này lưu trữ toàn bộ thông tin định danh chính thức c�
 ## 🔗 4. Kênh Mạng Xã Hội & Học Thuật (sameAs Links)
 
 *   **Mã nguồn mở (GitHub)**: [https://github.com/leanity-labs](https://github.com/leanity-labs)
-*   **Mạng xã hội Doanh nghiệp (LinkedIn)**: [https://linkedin.com/company/leanity-labs](https://linkedin.com/company/leanity-labs)
+*   **Mạng xã hội Doanh nghiệp (LinkedIn)**: [https://linkedin.com/in/leanitylabs](https://linkedin.com/in/leanitylabs)
 *   **Hồ sơ công bố học thuật**: [https://www.researchgate.net](https://www.researchgate.net)
 
 ---
@@ -113,7 +113,7 @@ Mẫu kịch bản dưới đây được nhúng trực tiếp vào mã nguồn 
         },
         "sameAs": [
           "https://github.com/leanity-labs",
-          "https://linkedin.com/company/leanity-labs",
+          "https://linkedin.com/in/leanitylabs",
           "https://www.researchgate.net"
         ]
       }
